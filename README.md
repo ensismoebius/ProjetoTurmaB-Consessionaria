@@ -1,4 +1,3 @@
 # ensismoebius-ProjetoTurmaB-Consessionaria
 
-
-PauloHenriqueDev->Paulo Henrique  
+SamuelVarolloDev1 -> Samuel Varollo  
