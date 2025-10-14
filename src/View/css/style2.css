@@ -1,0 +1,11 @@
+                              /*CSS DO REGISTER.HTML*/
+
+#body_registerhtml{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+                              /*CSS DO LOGIN.HTML*/
