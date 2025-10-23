@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do veículo</title>
+    <link rel="stylesheet" href="/src/View/css/style.css">
+</head>
+<body id="body_showhtml">
+    <div id="div_showhtml">
+        <header id="header_showhtml">
+            <h1>Detalhes do veículo</h1>
+        </header>
+
+        <main id="main_showhtml">
+            <form id="form_showhtml" action="" method="post">
+                <label for="Nome_cliente">Nome:</label>
+                <input name="Nome_cliente" type="text" id="Nome_cliente" placeholder="Seu Nome Completo" autocomplete="name" required>
+
+                <label for="Email_cliente">Email:</label>
+                <input name="Email_cliente" type="email" id="Email_cliente" placeholder="Seu@email.com" autocomplete="email" required>
+
+                <label for="Telefone_cliente">Número de telefone:</label>
+                <input name="Telefone_cliente" type="text" id="Telefone_cliente" placeholder="DDD 9XXXX-XXXX" autocomplete="tel" required>
+
+                <label for="Mensagem_cliente">Mensagem:</label>
+                <textarea name="Mensagem" id="Mensagem_cliente" placeholder="Escreva aqui sua mensagem..." required></textarea>
+
+                <input name="ID_veiculo" type="hidden" id="ID_veiculo" required>
+
+                <input name="Enviar" type="submit" id="Enviar" value="Enviar">
+            </form>
+        </main>
+    </div>
+</body>
+</html>
