@@ -3,11 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 23-Out-2025 às 23:04
+-- Tempo de geração: 24-Out-2025 às 00:10
 -- Versão do servidor: 8.0.25
 -- versão do PHP: 7.3.28
-
-
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -22,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `PRJ2DSB`
 --
-
-
 CREATE DATABASE IF NOT EXISTS `PRJ2DSB` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 USE `PRJ2DSB`;
 
@@ -45,11 +41,6 @@ CREATE TABLE IF NOT EXISTS `ACESSOS` (
   KEY `CARGOS_ACESSO` (`ID_AUTOR_C`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Truncar tabela antes do insert `ACESSOS`
---
-
-TRUNCATE TABLE `ACESSOS`;
 -- --------------------------------------------------------
 
 --
@@ -66,11 +57,6 @@ CREATE TABLE IF NOT EXISTS `agendamento` (
   KEY `id_cli` (`id_cli`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Truncar tabela antes do insert `agendamento`
---
-
-TRUNCATE TABLE `agendamento`;
 -- --------------------------------------------------------
 
 --
@@ -88,11 +74,6 @@ CREATE TABLE IF NOT EXISTS `Atendimento` (
   KEY `id_atendt_atendm_atendm` (`id_atendt_atendm`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Truncar tabela antes do insert `Atendimento`
---
-
-TRUNCATE TABLE `Atendimento`;
 -- --------------------------------------------------------
 
 --
@@ -109,11 +90,6 @@ CREATE TABLE IF NOT EXISTS `BANCO` (
   PRIMARY KEY (`IDBANCO`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Truncar tabela antes do insert `BANCO`
---
-
-TRUNCATE TABLE `BANCO`;
 -- --------------------------------------------------------
 
 --
@@ -128,11 +104,6 @@ CREATE TABLE IF NOT EXISTS `CARGOS` (
   PRIMARY KEY (`ID_cargo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Truncar tabela antes do insert `CARGOS`
---
-
-TRUNCATE TABLE `CARGOS`;
 -- --------------------------------------------------------
 
 --
@@ -146,11 +117,6 @@ CREATE TABLE IF NOT EXISTS `CATEGORIAS` (
   PRIMARY KEY (`id_categorias`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Truncar tabela antes do insert `CATEGORIAS`
---
-
-TRUNCATE TABLE `CATEGORIAS`;
 -- --------------------------------------------------------
 
 --
@@ -171,11 +137,6 @@ CREATE TABLE IF NOT EXISTS `CLIENTES` (
   PRIMARY KEY (`id_cli`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Truncar tabela antes do insert `CLIENTES`
---
-
-TRUNCATE TABLE `CLIENTES`;
 -- --------------------------------------------------------
 
 --
@@ -197,11 +158,6 @@ CREATE TABLE IF NOT EXISTS `COMPRA` (
   KEY `CompEstoq` (`id_estoque`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Truncar tabela antes do insert `COMPRA`
---
-
-TRUNCATE TABLE `COMPRA`;
 -- --------------------------------------------------------
 
 --
@@ -219,11 +175,6 @@ CREATE TABLE IF NOT EXISTS `CONTA_CORRENTE` (
   PRIMARY KEY (`id_conta`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Truncar tabela antes do insert `CONTA_CORRENTE`
---
-
-TRUNCATE TABLE `CONTA_CORRENTE`;
 -- --------------------------------------------------------
 
 --
@@ -243,11 +194,6 @@ CREATE TABLE IF NOT EXISTS `DESPESAS` (
   KEY `id_tipo_despesa` (`id_tipo_despesa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Truncar tabela antes do insert `DESPESAS`
---
-
-TRUNCATE TABLE `DESPESAS`;
 -- --------------------------------------------------------
 
 --
@@ -271,11 +217,6 @@ CREATE TABLE IF NOT EXISTS `DOCUMENTOS` (
   KEY `idModelos` (`idModelos`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Truncar tabela antes do insert `DOCUMENTOS`
---
-
-TRUNCATE TABLE `DOCUMENTOS`;
 -- --------------------------------------------------------
 
 --
@@ -291,11 +232,6 @@ CREATE TABLE IF NOT EXISTS `ESTOQUE` (
   PRIMARY KEY (`id_estoque`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Truncar tabela antes do insert `ESTOQUE`
---
-
-TRUNCATE TABLE `ESTOQUE`;
 -- --------------------------------------------------------
 
 --
@@ -320,11 +256,6 @@ CREATE TABLE IF NOT EXISTS `FINANCIAMENTO` (
   KEY `FKVEIC_FINANCIAMENTO` (`IDVEICL`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Truncar tabela antes do insert `FINANCIAMENTO`
---
-
-TRUNCATE TABLE `FINANCIAMENTO`;
 -- --------------------------------------------------------
 
 --
@@ -344,11 +275,6 @@ CREATE TABLE IF NOT EXISTS `Funcionarios` (
   KEY `IDDepartamento` (`IDDepartamento`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Truncar tabela antes do insert `Funcionarios`
---
-
-TRUNCATE TABLE `Funcionarios`;
 -- --------------------------------------------------------
 
 --
@@ -366,11 +292,6 @@ CREATE TABLE IF NOT EXISTS `GANHOS` (
   PRIMARY KEY (`id_ganhos`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Truncar tabela antes do insert `GANHOS`
---
-
-TRUNCATE TABLE `GANHOS`;
 -- --------------------------------------------------------
 
 --
@@ -385,11 +306,6 @@ CREATE TABLE IF NOT EXISTS `Horario` (
   `IDFuncionario` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Truncar tabela antes do insert `Horario`
---
-
-TRUNCATE TABLE `Horario`;
 -- --------------------------------------------------------
 
 --
@@ -411,11 +327,6 @@ CREATE TABLE IF NOT EXISTS `INTERACOES` (
   KEY `id_atendt_atual_int` (`id_atendt_atual_int`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Truncar tabela antes do insert `INTERACOES`
---
-
-TRUNCATE TABLE `INTERACOES`;
 -- --------------------------------------------------------
 
 --
@@ -431,11 +342,6 @@ CREATE TABLE IF NOT EXISTS `ITENS_NOTA` (
   PRIMARY KEY (`id_itnf`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Truncar tabela antes do insert `ITENS_NOTA`
---
-
-TRUNCATE TABLE `ITENS_NOTA`;
 -- --------------------------------------------------------
 
 --
@@ -453,10 +359,12 @@ CREATE TABLE IF NOT EXISTS `ITENS_PEDIDO` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Truncar tabela antes do insert `ITENS_PEDIDO`
+-- Extraindo dados da tabela `ITENS_PEDIDO`
 --
 
-TRUNCATE TABLE `ITENS_PEDIDO`;
+INSERT INTO `ITENS_PEDIDO` (`id_itpd`, `nome_pd`, `quantidade`, `valor_unitario`, `valor_total`) VALUES
+(1, 'teste', 1, 10, 10);
+
 -- --------------------------------------------------------
 
 --
@@ -480,11 +388,6 @@ CREATE TABLE IF NOT EXISTS `MODELOS` (
   KEY `idCombustivel` (`idCombustivel`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Truncar tabela antes do insert `MODELOS`
---
-
-TRUNCATE TABLE `MODELOS`;
 -- --------------------------------------------------------
 
 --
@@ -502,11 +405,6 @@ CREATE TABLE IF NOT EXISTS `MONTADORAS` (
   PRIMARY KEY (`idMontadoras`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Truncar tabela antes do insert `MONTADORAS`
---
-
-TRUNCATE TABLE `MONTADORAS`;
 -- --------------------------------------------------------
 
 --
@@ -528,11 +426,6 @@ CREATE TABLE IF NOT EXISTS `NOTAS_FISCAIS` (
   KEY `ItemNF` (`id_itnf`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Truncar tabela antes do insert `NOTAS_FISCAIS`
---
-
-TRUNCATE TABLE `NOTAS_FISCAIS`;
 -- --------------------------------------------------------
 
 --
@@ -547,11 +440,6 @@ CREATE TABLE IF NOT EXISTS `PECAS` (
   PRIMARY KEY (`id_peca`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Truncar tabela antes do insert `PECAS`
---
-
-TRUNCATE TABLE `PECAS`;
 -- --------------------------------------------------------
 
 --
@@ -569,11 +457,6 @@ CREATE TABLE IF NOT EXISTS `PEDIDOS` (
   KEY `ItemPedido` (`id_itpd`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Truncar tabela antes do insert `PEDIDOS`
---
-
-TRUNCATE TABLE `PEDIDOS`;
 -- --------------------------------------------------------
 
 --
@@ -595,11 +478,25 @@ CREATE TABLE IF NOT EXISTS `PRODUTOS` (
   KEY `fkpeca_prd` (`pecas`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+-- --------------------------------------------------------
+
 --
--- Truncar tabela antes do insert `PRODUTOS`
+-- Estrutura da tabela `PROPOSTAS`
 --
 
-TRUNCATE TABLE `PRODUTOS`;
+DROP TABLE IF EXISTS `PROPOSTAS`;
+CREATE TABLE IF NOT EXISTS `PROPOSTAS` (
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `VEICULO_ID` int DEFAULT NULL,
+  `NOME_CLIENTE` varchar(50) DEFAULT NULL,
+  `EMAIL_CLIENTE` varchar(50) DEFAULT NULL,
+  `TELEFONE_CLIENTE` char(15) DEFAULT NULL,
+  `MENSAGEM` varchar(50) DEFAULT NULL,
+  `DATA_PROPOSTA` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `IDVEIC_VEICULO` (`VEICULO_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 -- --------------------------------------------------------
 
 --
@@ -624,11 +521,26 @@ CREATE TABLE IF NOT EXISTS `REVISAO` (
   KEY `FK_VEICULO_REVISAO` (`ID_VEICULO`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+-- --------------------------------------------------------
+
 --
--- Truncar tabela antes do insert `REVISAO`
+-- Estrutura da tabela `roles`
 --
 
-TRUNCATE TABLE `REVISAO`;
+DROP TABLE IF EXISTS `roles`;
+CREATE TABLE IF NOT EXISTS `roles` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nome` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Extraindo dados da tabela `roles`
+--
+
+INSERT INTO `roles` (`id`, `nome`) VALUES
+(1, 'pipoca');
+
 -- --------------------------------------------------------
 
 --
@@ -643,11 +555,6 @@ CREATE TABLE IF NOT EXISTS `ROTINAS` (
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Truncar tabela antes do insert `ROTINAS`
---
-
-TRUNCATE TABLE `ROTINAS`;
 -- --------------------------------------------------------
 
 --
@@ -664,11 +571,6 @@ CREATE TABLE IF NOT EXISTS `SEGURADORA` (
   PRIMARY KEY (`IDSEGURADORA`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Truncar tabela antes do insert `SEGURADORA`
---
-
-TRUNCATE TABLE `SEGURADORA`;
 -- --------------------------------------------------------
 
 --
@@ -692,11 +594,6 @@ CREATE TABLE IF NOT EXISTS `SEGURO` (
   KEY `SEGURADORA_SEGURO` (`IDSEGURADORA`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Truncar tabela antes do insert `SEGURO`
---
-
-TRUNCATE TABLE `SEGURO`;
 -- --------------------------------------------------------
 
 --
@@ -713,15 +610,10 @@ CREATE TABLE IF NOT EXISTS `Servicos` (
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Truncar tabela antes do insert `Servicos`
---
-
-TRUNCATE TABLE `Servicos`;
---
 -- Extraindo dados da tabela `Servicos`
 --
 
-INSERT DELAYED IGNORE INTO `Servicos` (`id_servico`, `nome_servico`, `descricao`, `valor_base`) VALUES
+INSERT INTO `Servicos` (`id_servico`, `nome_servico`, `descricao`, `valor_base`) VALUES
 (1, 'Troca de óleo e filtros', 'Substituição do óleo e filtros básicos', '150.00'),
 (2, 'Substituição de Velas', 'Troca das velas do motor', '120.00'),
 (3, 'Verificação dos fluidos', 'Checagem e ajuste dos níveis', '80.00'),
@@ -751,11 +643,6 @@ CREATE TABLE IF NOT EXISTS `TIPO_COMBUSTIVEL` (
   PRIMARY KEY (`idCombustivel`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Truncar tabela antes do insert `TIPO_COMBUSTIVEL`
---
-
-TRUNCATE TABLE `TIPO_COMBUSTIVEL`;
 -- --------------------------------------------------------
 
 --
@@ -773,11 +660,6 @@ CREATE TABLE IF NOT EXISTS `TIPO_DESPESAS` (
   PRIMARY KEY (`id_tipo_despesa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Truncar tabela antes do insert `TIPO_DESPESAS`
---
-
-TRUNCATE TABLE `TIPO_DESPESAS`;
 -- --------------------------------------------------------
 
 --
@@ -793,11 +675,6 @@ CREATE TABLE IF NOT EXISTS `TIPO_PROBLEMA` (
   PRIMARY KEY (`id_tp_probl`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Truncar tabela antes do insert `TIPO_PROBLEMA`
---
-
-TRUNCATE TABLE `TIPO_PROBLEMA`;
 -- --------------------------------------------------------
 
 --
@@ -814,11 +691,24 @@ CREATE TABLE IF NOT EXISTS `TURNOS` (
   PRIMARY KEY (`ID_turno`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+-- --------------------------------------------------------
+
 --
--- Truncar tabela antes do insert `TURNOS`
+-- Estrutura da tabela `USUARIOS`
 --
 
-TRUNCATE TABLE `TURNOS`;
+DROP TABLE IF EXISTS `USUARIOS`;
+CREATE TABLE IF NOT EXISTS `USUARIOS` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nome` varchar(150) DEFAULT NULL,
+  `email` varchar(150) DEFAULT NULL,
+  `senha` varchar(80) DEFAULT NULL,
+  `role` int DEFAULT '2',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`),
+  KEY `role` (`role`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 -- --------------------------------------------------------
 
 --
@@ -836,11 +726,6 @@ CREATE TABLE IF NOT EXISTS `VEICULOS` (
   PRIMARY KEY (`id_veiculos`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Truncar tabela antes do insert `VEICULOS`
---
-
-TRUNCATE TABLE `VEICULOS`;
 -- --------------------------------------------------------
 
 --
@@ -862,11 +747,6 @@ CREATE TABLE IF NOT EXISTS `VISTORIA` (
   KEY `FK_VEICULOS_VISTORIA` (`ID_VEICULO`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Truncar tabela antes do insert `VISTORIA`
---
-
-TRUNCATE TABLE `VISTORIA`;
 --
 -- Restrições para despejos de tabelas
 --
@@ -964,6 +844,12 @@ ALTER TABLE `PRODUTOS`
   ADD CONSTRAINT `fkveiculo_prd` FOREIGN KEY (`veiculos`) REFERENCES `VEICULOS` (`id_veiculos`);
 
 --
+-- Limitadores para a tabela `PROPOSTAS`
+--
+ALTER TABLE `PROPOSTAS`
+  ADD CONSTRAINT `IDVEIC_VEICULO` FOREIGN KEY (`VEICULO_ID`) REFERENCES `VEICULOS` (`id_veiculos`);
+
+--
 -- Limitadores para a tabela `REVISAO`
 --
 ALTER TABLE `REVISAO`
@@ -977,6 +863,12 @@ ALTER TABLE `SEGURO`
   ADD CONSTRAINT `FKCLI_SEGURO` FOREIGN KEY (`IDCLI`) REFERENCES `CLIENTES` (`id_cli`),
   ADD CONSTRAINT `FKVEI_SEGURO` FOREIGN KEY (`IDVEICL`) REFERENCES `VEICULOS` (`id_veiculos`),
   ADD CONSTRAINT `SEGURADORA_SEGURO` FOREIGN KEY (`IDSEGURADORA`) REFERENCES `SEGURADORA` (`IDSEGURADORA`);
+
+--
+-- Limitadores para a tabela `USUARIOS`
+--
+ALTER TABLE `USUARIOS`
+  ADD CONSTRAINT `USUARIOS_ibfk_1` FOREIGN KEY (`role`) REFERENCES `roles` (`id`);
 
 --
 -- Limitadores para a tabela `VISTORIA`
