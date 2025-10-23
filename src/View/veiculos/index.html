@@ -26,7 +26,7 @@
             padding: 10px 20px;
             width: 100%;
             z-index: 1000;
-            margin-bottom: 30px; /* Espaço entre o header e os cards */
+            margin-bottom: 30px; 
         }
 
         .header-container {
@@ -128,7 +128,7 @@
         }
 
         .btn-detalhe:hover, .btn-contato:hover {
-            background: #808080; /* Cinza escuro ao passar o mouse */
+            background: #808080; 
             color: white;
         }
     </style>
@@ -142,16 +142,17 @@
                 </div>
                 <nav class="navigation">
                     <ul>
-                        <li><a href="#">Comprar</a></li>
-                        <li><a href="#">Vender</a></li>
-                        <li><a href="#">Serviços</a></li>
+                        <li><a href="#">Peças</a></li>
                         <li><a href="#">Ajuda</a></li>
+                        <li><a href="#">Login</a></li>
                     </ul>
                 </nav>
             </div>
         </header>
 
-        <div class="grid" id="vehicleGrid"></div>
+        <div class="grid" id="vehicleGrid">
+            {{ veiculos|raw }}
+        </div>
     </div>
 
     <script>
