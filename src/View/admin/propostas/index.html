@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gereciamento de Propostas - Admin</title>
+
+<style>
+    
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Slab:wght@100..900&display=swap');
+    * {
+        box-sizing: border-box;
+        font-family: 'Roboto Slab', sans-serif;
+    }
+
+    h1{
+        margin: 10px 4%;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    FORM:first-of-type {
+        margin: 10px 4%;
+        width: 90%;
+    }
+    FORM:first-of-type > LABEL {
+        display: block;
+    }
+    FORM:first-of-type > INPUT {
+        width: 75%;
+    }
+    FORM:first-of-type > BUTTON {
+        width: 12%;
+    }
+    TABLE {
+        margin: 50px 4%;
+        width: 90%;
+        border: 1px double #cfcfcf;
+    }
+    TR:nth-child(odd) {
+        background-color: #fcfcfc;
+    }
+    TR:nth-child(even) {
+        background-color: #ededed;
+    }
+    TH {
+        background-color: #606060;
+        color: #FFFFFF;
+    }
+</style>
+</head>
+<body>
+    
+    <h1>Gerenciamento de Propostas</h1>
+
+    <form>
+        <label>Propostas</label>
+        <input type="hidden" name="txtCod"/>
+        <input name="txtNome" placeholder="Informe o CPF/CNPJ do cliente" />
+        <button name="btnPesquisar">Pesquisar</button>
+    </form>
+    <form>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th>Veículo</th>
+                    <th>Data da Proposta</th>
+                    <th>Lido</th>
+                    <th>Respondido</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                   <a href="">00092</a>
+                    </td>
+                    <td>
+                    Joao da Silva Henrique Santos
+                    </td>
+                    <td>
+                    Civic
+                    </td>
+                    <td>
+                    12/11/2025
+                    </td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>
+                   <a href="">00364</a>
+                    </td>
+                    <td>
+                    Paulo Amorim da Silva
+                    </td>
+                    <td>
+                    Jetta
+                    </td>
+                    <td>
+                    10/11/2025
+                    </td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>
+                   <a href="">00364</a>
+                    </td>
+                    <td>
+                        Jorge Amaral De Otero
+                    </td>
+                    <td>
+                        Siena
+                    </td>
+                    <td>
+                    9/11/2025
+                    </td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                </tr>
+            </tbody>
+            
+            <tfoot>
+                <tr>
+                    <td name="rodape">
+                        <br><br>
+                        <a href=>Página Anterior</a>
+                        <a href=>Próxima página</a>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </form>
+</body>
+</html>
+</body>
+</html>
