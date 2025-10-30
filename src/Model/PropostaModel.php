@@ -1,10 +1,11 @@
 <?php
-namespace Concessionaria\Projetob\Model\Proposta;
+namespace Concessionaria\Projetob\Model;
 
 class PropostaModel
 {
-    public function salvarProposta(){
-    $oCon = new PDO('mysql:host=localhost; dbname=PRJ2DSB', 'Aluno2DS', 'SenhaBD2');
+    public function salvarProposta()
+    {
+    $oCon = new \PDO('mysql:host=localhost; dbname=PRJ2DSB', 'Aluno2DS', 'SenhaBD2');
 
 // id é um placeholder e deve ser alterado para pegar o id do usuario
     $id = 1;
@@ -18,5 +19,4 @@ class PropostaModel
     $oCon->exec($cSQL);
     
     }
-
 }
