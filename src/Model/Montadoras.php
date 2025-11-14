@@ -9,5 +9,4 @@ class Montadoras
     public int $anoFundacao;
     public string $CNPJ;
     public string $contato;
-
 }

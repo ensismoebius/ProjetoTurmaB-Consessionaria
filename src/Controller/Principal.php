@@ -27,5 +27,14 @@ class Principal
 
         echo $this->ambiente->render("veiculos/catalogo.html", ['veiculos' => $listaVeiculos]);
     }
+    public function login()
+    {
+        echo $this->ambiente->render("teste.html");
+        
+    }
+    public function loginDuo()
+    {
+        echo $this->ambiente->render("teste.html");
+    }
 }
 ?>

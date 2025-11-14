@@ -36,6 +36,8 @@ class Veiculos
             $veiculo->descricao = $item['descricao'];
             $veiculo->ano = $item['ano'];
             $veiculo->cor = $item['cor'];
+            $veiculo->preco = $item["preco"];
+            $veiculo->quilometragem = $item["quilometragem"];
 
             $listaVeiculos[] = $veiculo;
         }
@@ -59,6 +61,8 @@ class Veiculos
             $veiculo->descricao = $item["descricao"];
             $veiculo->ano = $item["ano"];
             $veiculo->cor = $item["cor"];
+            $veiculo->preco = $item["preco"];
+            $veiculo->quilometragem = $item["quilometragem"];
 
             $listaVeiculos[] = $veiculo;
         }
@@ -85,6 +89,8 @@ class Veiculos
         $veiculo->descricao = $dados["descricao"];
         $veiculo->ano = $dados["ano"];
         $veiculo->cor = $dados["cor"];
+        $veiculo->preco = $dados["preco"];
+        $veiculo->quilometragem = $dados["quilometragem"];
 
         return $veiculo;
     }
@@ -112,8 +118,10 @@ class Veiculos
 	id int primary key not null auto_increment,
     marca varchar(255) NOT NULL,
     modelo varchar(255) NOT NULL,
-    descricao varchar(500),
     ano YEAR,
+    preco double(10,2),
+    quilometragem int,
+    descricao varchar(500),
     cor varchar(255) NOT NULL,
     imagem varchar(255));
     */

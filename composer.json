@@ -3,8 +3,8 @@
     "description": "Projeto de concessionária da Turma B",
     "type": "project",
     "require": {
-        "twig/twig": "4.x-dev",
-        "coffeecode/router": "*"
+        "twig/twig": "3.19.0",
+        "coffeecode/router": "dev-master"
     },
     "license": "proprietary",
     "autoload": {

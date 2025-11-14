@@ -3,9 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usuário</title>
+    <title>Gerenciamento de usuário</title>
 </head>
 <body>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f6f8fa;
+        margin: 0;
+        padding: 20px;
+    }
     
+    .container {
+        max-width: 900px;
+        margin: auto;
+        background: #fff;
+        padding: 20px
+    }
+    
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    th, td {
+        text-align: left;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    select {
+        padding: 5px;
+    }
+    
+    .btnalterar {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    .btnalterar:hover {
+        background-color: #218838;
+    }
+    
+    .mensagem-vazia {
+        text-align: center;
+        margin-top: 20px;
+        color: #777;
+    }
+    </style>
+        <main class="container">
+            <h1>Gerenciamento de Usuários</h1>
+    
+    
+   <table>
+    <thead>
+   <tr>
+    <th>ID</th>
+    <th>Nome</th>
+    <th>Email</th>
+    <th>Função</th>
+     <th>Ações</th>
+ </tr>
+</thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Maria Sousa</td>
+          <td>mariasousa@email.com</td>
+          <td>
+            <select>
+              <option>cliente</option>
+              <option>funcionario</option>
+              <option>gerente</option>
+              <option selected>admin</option>
+            </select>
+          </td>
+          <td>
+            <button class="btnalterar">Alterar</button>
+          </td>
+        </tr>
+    
+          <tr>
+         <td>2</td>
+        <td>João Lima</td>
+        <td>joaolima@email.com</td>
+         <td>
+   <select>
+     <option>cliente</option>
+     <option selected>funcionario</option>
+     <option>gerente</option>
+     <option>admin</option>
+  </select>
+</td>
+ <td>
+<button class="btnalterar">Alterar</button>
+</td>
+</tr>
+    
+      </tbody>
+    </table>
 </body>
 </html>

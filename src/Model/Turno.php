@@ -1,5 +1,5 @@
 <?php
-    namespace Concessionaria\Projetob\Model;
+namespace Concessionaria\Projetob\Model;
 
 class Turno
 {

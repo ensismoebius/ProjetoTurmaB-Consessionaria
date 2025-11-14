@@ -38,17 +38,17 @@
         return;
     }
 
-    $conexao = new PDO("mysql:host=localhost;dbname=PRJ2DSB", "Aluno2DS", "SenhaBD2");
+    $conexao = new PDO("mysql:host=192.168.0.12;dbname=PRJ2DSB", "Aluno2DS", "SenhaBD2");
 
     $user = new Usuario($conexao);
 
     if ($user->existeEmail($email)) {
-        echo "E-mail já cadastrado";
+        header("Location: /ProjetoTurmaB-Consessionaria/register");
         return;
     }
 
     if ($user->criar($nome, $email, $senha)) {
-        echo "Usuário cadastrado com sucesso!";
+        header("Location: /ProjetoTurmaB-Consessionaria/");
     } else {
         echo "Erro ao cadastrar usuário.";
     }
@@ -60,7 +60,7 @@
 
     public function login(){
         $email = $_POST['Email_Usuario'] ?? '';
-        $senha = $_POST['Senha_Usuario'] ?? '';
+        $senha = trim($_POST['Senha_Usuario'] ?? '');
 
         if (empty($email) || empty($senha)) {
             echo "Preencha todos os campos.";
@@ -73,7 +73,7 @@
         }
 
         try {
-            $this->conexao = new \PDO("mysql:host=localhost;dbname=PRJ2DSB", "Aluno2DS", "SenhaBD2");
+            $this->conexao = new \PDO("mysql:host=192.168.0.12;dbname=PRJ2DSB", "Aluno2DS", "SenhaBD2");
             $this->conexao->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         } catch (\PDOException $e) {
             echo "Erro ao conectar ao banco de dados.";
@@ -81,13 +81,14 @@
         }
 
 
-        $stmt = $this->conexao->prepare("SELECT id, senha FROM USUARIOS WHERE email = :email");
+        $stmt = $this->conexao->prepare("SELECT senha FROM USUARIOS WHERE email = :email");
         $stmt->bindValue(":email", $email);
         $stmt->execute();
 
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+        
 
-        if($usuario && password_verify($senha, $usuario['senha'])){
+        if($usuario && password_verify($senha,$usuario['senha'])){
             session_start();
             header("Location: http://localhost/ProjetoTurmaB-Consessionaria/");
             $_SESSION["user_id"] = $usuario['id'];

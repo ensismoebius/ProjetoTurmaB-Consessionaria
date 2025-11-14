@@ -1,6 +1,5 @@
 <?php
 namespace Concessionaria\Projetob\Model;
-use PDO;
 
 class Usuario
 {
@@ -29,7 +28,7 @@ class Usuario
     {
         $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
         $stmt = $this->conexao->prepare(
-            "INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)"
+            "INSERT INTO USUARIOS (nome, email, senha) VALUES (:nome, :email, :senha)"
         );
         $stmt->bindValue(":nome", $nome);
         $stmt->bindValue(":email", $email);

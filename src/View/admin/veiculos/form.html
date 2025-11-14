@@ -3,137 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>titulo</title>
+    <title>Adicionar / Editar</title>
 
-
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
-* {
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Open Sans;
+            font-family: Open Sans, sans-serif;
         }
 
- body {
+        body {
             background-color: rgb(126, 126, 126);
             min-height: 100vh;
             padding: 20px;
-            margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            
+        }
+
+        #divDiv {
+            border-radius: 10px;
+            background-color: rgb(160, 159, 159);
+            width: 30%;
+            padding: 20px;
         }
 
         header {
             display: flex;
             justify-content: center;
             background: rgb(43, 42, 42);
-            padding: 10px 20px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            color: #ccc;
+            font-size: 28px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input {
+            padding: 8px;
+            border-radius: 5px;
             width: 100%;
-            z-index: 1000;
-            margin-bottom: 30px; 
         }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .logo h1 {
-            font-size: 50px;
-            color: #cccccc;
-            font-weight: bold;
-        }
-        .navigation ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-            margin: 0;
-            padding: 0;
-        }
-        .navigation ul li a {
-            text-decoration: none;
-            color: #2e2e2e;
-            font-weight: 600;
-            font-size: 20px;
-            transition: color 0.3s;
-        }
-        
-        .grid { 
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-        
-        }
-        input{
-        border-radius: 5%;
-        }
-        
-
-        #divDiv{
-            border-radius: 10%;
-            background-color: rgb(160, 159, 159);
-            width: 30%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        #divDiv form{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-       
-    
-        
-</style>
-
+    </style>
 </head>
 
 <body>
-    
-    <body>
-        <div class="container" id="divDiv">
-            <header>
-                <div class="header-container">
-                    <div class="logo">
-                        <h1>Adicionar/Editar</h1>
-                        <div class="grid" id="vehicleGrid"></div>
-                    </div>
-            </header>
 
-        <form action="adicionareditar">
-        <label h1>Id: <input type="number" id="id" >
-        </label >
-        
-        <label for="marca" h1>Marca: <input type="text" id="marca">
+<div id="divDiv">
+
+    <header>
+        <h1>Adicionar / Editar</h1>
+    </header>
+
+    <form action="/ProjetoTurmaB-Consessionaria/editar" method="POST" enctype="multipart/form-data">
+
+        <label>Id:
+            <input type="number" name="id">
         </label>
 
-        <label for="modelo">Modelo: <input type="text" id="modelo">
+        <label>Marca:
+            <input type="text" name="marca">
         </label>
 
-
-        <label for="preco" h1>Preco: <input type="number" id="preco">
+        <label>Modelo:
+            <input type="text" name="modelo">
         </label>
-        <br>
-        <br>
-        <div id="imag">
-            <label for="img">Imagens</label>
-            <input type="file" name="arquivos" id="img">
-        </div>
-        <br>
+
+        <label>Preço:
+            <input type="number" name="preco">
+        </label>
+
+        <label>Imagens:
+            <input type="file" name="imagem">
+        </label>
+
         <input type="submit" value="Confirmar">
+
     </form>
+
 </div>
-
-
-
 
 </body>
 </html>
-    

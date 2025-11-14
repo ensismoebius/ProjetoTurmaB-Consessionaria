@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Veículos - Concessionária</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(251, 251, 251);
+            min-height: 100vh;
+            padding: 20px;
+            margin: 0;
+        }
+
+        
+
+        header {
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 10px 20px;
+            width: 100%;
+            z-index: 1000;
+            margin-bottom: 30px; /* Espaço entre o header e os cards */
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo h1 {
+            font-size: 50px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .navigation ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navigation ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .navigation ul  a:hover {
+            color: #667eea;
+        }
+
+        .grid { 
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .card-price {
+            font-size: 1.8em;
+            color: #3e3e3e;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .card-footer {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .btn-detalhe {
+            background: #d3d3d3;
+            color: #333; 
+        }
+
+        .btn-contato {
+            background: #a9a9a9;
+            color: #333;
+        }
+
+        .btn-detalhe:hover, .btn-contato:hover {
+            background: #808080; /* Cinza escuro ao passar o mouse */
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-container">
+                <div class="logo">
+                    <h1>Ousadia Motors</h1>
+                </div>
+                <nav class="navigation">
+                    <ul>
+                        <li><a href="#">Comprar</a></li>
+                        <li><a href="#">Vender</a></li>
+                        <li><a href="#">Serviços</a></li>
+                        <li><a href="#">Ajuda</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div class="grid" id="vehicleGrid"></div>
+    </div>
+
+    <script>
+        const veiculos = [
+            {
+                Id:1,
+                marca: "Toyota",
+                modelo: "Corolla",
+                preco: 145000,
+                imagem: "https://www.autoo.com.br/fotos/2024/8/1280_960/toyota_corolla_2025_1_03082024_79723_1280_960.jpg"
+            },
+            {
+                Id: 2,
+                marca: "Honda",
+                modelo: "Civic",
+                preco: 165000,
+                imagem: "https://www.km77.com/images/medium/8/3/3/3/honda-civic-2026-frontal-lateral.378333.jpg"
+            },
+            {
+                Id: 3,
+                marca: "Porsche",
+                modelo: "911 turbo S",
+                preco: 2500000,
+                imagem: "https://cdn.motor1.com/images/mgl/1ZKbv7/s1/2025-porsche-911-turbo-50-years.jpg"
+            }
+        ];
+
+        function formatarPreco(valor) {
+            return valor.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+            });
+        }
+
+        function renderizarVeiculos() {
+            const grid = document.getElementById('vehicleGrid');
+            grid.innerHTML = veiculos.map(veiculo => `
+                <div class="card">
+                    <img src="${veiculo.imagem}" alt="${veiculo.marca} ${veiculo.modelo}" class="card-image">
+                    <div class="card-content">
+                        <h2 class="card-titulo">${veiculo.marca} ${veiculo.modelo}</h2>
+                        <p class="card-preco">${formatarPreco(veiculo.preco)}</p>
+                        <div class="card-footer">
+                            <button class="btn btn-detalhe">Ver Detalhes</button>
+                            <button class="btn btn-contato">Entrar em Contato</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        renderizarVeiculos();
+    </script>
+</body>
+</html>
