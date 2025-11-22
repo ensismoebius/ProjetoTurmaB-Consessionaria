@@ -39,6 +39,7 @@
         $email = trim($_POST['Email_Usuario'] ?? '');
         $senha = $_POST['Senha_Usuario'] ?? '';
 
+<<<<<<< Updated upstream
         if (empty($nome) || empty($email) || empty($senha)) {
             echo $this->ambiente->render('register.html', [
                 'tipo_msg' => 'erro',
@@ -46,6 +47,44 @@
                 'nome' => $nome,
                 'email' => $email,
             ]);
+=======
+    if (empty($nome) || empty($email) || empty($senha)) {
+        echo "Preencha todos os campos.";
+        return;
+    }
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo "E-mail inválido.";
+        return;
+    }
+
+    $conexao = new PDO("mysql:host=localhost;dbname=PRJ2DSB", "root", "");
+
+    $user = new Usuario($conexao);
+
+    if ($user->existeEmail($email)) {
+        header("Location: /ProjetoTurmaB-Consessionaria/register");
+        return;
+    }
+
+    if ($user->criar($nome, $email, $senha)) {
+        header("Location: /ProjetoTurmaB-Consessionaria/");
+    } else {
+        echo "Erro ao cadastrar usuário.";
+    }
+}
+
+    public function showLoginForm(){
+       echo $this->ambiente->render("login.html");
+    }
+
+    public function login(){
+        $email = $_POST['Email_Usuario'] ?? '';
+        $senha = trim($_POST['Senha_Usuario'] ?? '');
+
+        if (empty($email) || empty($senha)) {
+            echo "Preencha todos os campos.";
+>>>>>>> Stashed changes
             return;
         }
 
@@ -162,6 +201,23 @@
             header("Location: http://localhost/ProjetoTurmaB-Consessionaria/");
             exit;
         }
+    }
+
+    public function salvarVeiculos() {
+    $id = $_POST['id'] ?? null;
+    $marca = $_POST['marca'] ?? '';
+    $modelo = $_POST['modelo'] ?? '';
+    $preco = $_POST['preco'] ?? '';
+    $imagem = null;
+
+    
+    if (!empty($_FILES['imagem']['name'])) {
+        $pasta = './uploads/';
+        if (!is_dir($pasta)) mkdir($pasta, 0777, true);
+        $arquivo = $pasta . basename($_FILES['imagem']['name']);
+        move_uploaded_file($_FILES['imagem']['tmp_name'], $arquivo);
+        $imagem = $arquivo;
+    }
     }
 }
 ?>
