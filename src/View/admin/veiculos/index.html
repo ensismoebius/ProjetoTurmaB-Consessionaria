@@ -74,17 +74,32 @@ td{
     padding: 15px 20px;
 }
 
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    font-size: 0.8em;
+    padding: 5px;
+}
+
+footer a {
+    color: white;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+
 </style>
 <body>
             <header>
                 <div class="header-container">
                     <div class="logo">
-                        <h1>Concessionária</h1>
+                        <h1>Ousadia Motors</h1>
                     </div>
                 </div>
                 <nav class="navigation">
                     <ul>
-                        <li><a href="#">Adicionar Veiculo</a></li>
+                        <li><a href="/ProjetoTurmaB-Consessionaria/editar">Adicionar Veiculo</a></li>
                     </ul>
             </header>
 
@@ -105,7 +120,7 @@ td{
                     <td><a href="#">Corolla</a></td>
                     <td>R$ 145.000,00</td>
                     <td>2025</td>
-                    <td><a href="#">editar</a></td>
+                    <td><a href="/ProjetoTurmaB-Consessionaria/editar">editar</a></td>
                     </tr>
                     <tr>
                     <td><input type ="checkbox" name="Selecionarveic">2</td>
@@ -113,7 +128,7 @@ td{
                     <td><a href="#">Civic</a></td>
                     <td>R$ 165.000,00</td>
                     <td>2022</td>
-                    <td><a href="#">editar</a></td>
+                    <td><a href="/ProjetoTurmaB-Consessionaria/editar">editar</a></td>
                     </tr>
                     <tr>
                     <td><input type ="checkbox" name="Selecionarveic">3</td>
@@ -121,12 +136,15 @@ td{
                     <td><a href="#">911 Turbo S</a></td>
                     <td>R$ 2.500.000,00</td>
                     <td>2025</td>
-                    <td><a href="#">editar</a></td>
+                    <td><a href="/ProjetoTurmaB-Consessionaria/editar">editar</a></td>
                     </tr>
                 </tbody>
                 <tfoot>
                         <td><button name="btnExcluir" type="submit" onclick="if(confirm('deseja realmente excluir este Veiculo?\n Essa operação não pode ser desfeita!!!')) this.parentElement.submit()">Remover Veiculo</button>
                 </tfoot>
             </table>
+            <footer>
+			<p>Ousadia Motors &copy; 2025</p>
+		</footer>
 </body>
 </html>
