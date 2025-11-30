@@ -298,8 +298,7 @@ footer {
 
 .catalogo-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 0.1fr));
-	justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 25px;
     padding: 10px;
 }
@@ -406,4 +405,3 @@ footer {
 .botoesPaginacao .seta:hover {
     background: #a9a9a9;
 }
-

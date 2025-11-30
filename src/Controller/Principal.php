@@ -33,7 +33,7 @@ class Principal
         if ($pagina < 1)
             $pagina = 1;
 
-        $limite = 5;
+        $limite = 20;
         $veiculos = $this->veiculosRepository->paginarVeiculo($pagina, $limite);
 
         $tipo_msg = $_SESSION['tipo_msg'] ?? null;
@@ -51,13 +51,8 @@ class Principal
 
     public function catalogo()
     {
-        $pagina = isset($_GET['page']) ? (int) $_GET['page'] : 1;
-        if ($pagina < 1)
-            $pagina = 1;
-
-        $limite = 20;
-        $veiculos = $this->veiculosRepository->paginarVeiculo($pagina, $limite);
-        echo $this->ambiente->render("veiculos/catalogo.html", ['veiculos' => $veiculos, 'pagina' => $pagina]);
+        $listaVeiculos = $this->veiculosRepository->veiculosSelectAll();
+        echo $this->ambiente->render("veiculos/catalogo.html", ['veiculos' => $listaVeiculos]);
     }
 }
 ?>

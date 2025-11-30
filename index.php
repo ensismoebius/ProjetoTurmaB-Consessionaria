@@ -17,7 +17,7 @@ $roteador->get("/proposta", "PropostaController:inicio");
 $roteador->post("/proposta", "PropostaController:enviar");
 $roteador->get("/editar", "Admin\\VeiculoController:showCreateForm");
 $roteador->post("/editar", "Admin\\VeiculoController:salvarVeiculo");
-$roteador->post("/logout", "AuthController:logout");
+
 // rotas de autenticação
 $roteador->get("/login", "AuthController:showLoginForm");
 $roteador->post("/login", "AuthController:login");

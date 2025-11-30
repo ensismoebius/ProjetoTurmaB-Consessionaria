@@ -9,7 +9,7 @@
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
 		<link
 			rel="stylesheet"
-			href="/ProjetoTurmaB-Consessionaria/public/assets/css/style.css" />
+			href="/public/assets/css/style.css" />
 		<!-- favor colocar o css dentro do style.css -->
 	</head>
 	<body>
@@ -70,42 +70,410 @@
 				<hr />
 			</header>
 		</div>
+		<!-- Painel de filtros (visível ao clicar em Filtrar) -->
+						<div id="painelFiltros" style="display:none; margin-top:8px;">
+							<select id="filtroMarca">
+								<option value="">Marca (todas)</option>
+							</select>
+							<select id="filtroModelo">
+								<option value="">Modelo (todos)</option>
+							</select>
+							<select id="filtroCor">
+								<option value="">Cor (todas)</option>
+							</select>
+							<input id="filtroAnoMin" type="number" placeholder="Ano mín." style="width:90px" />
+							<input id="filtroAnoMax" type="number" placeholder="Ano máx." style="width:90px" />
+							<input id="filtroPrecoMin" type="number" step="0.01" placeholder="R$ mín." style="width:110px" />
+							<input id="filtroPrecoMax" type="number" step="0.01" placeholder="R$ máx." style="width:110px" />
+							<button type="button" id="aplicarFiltro">Aplicar filtro</button>
+							<button type="button" id="limparFiltro">Limpar filtros</button>
+						</div>
+
 
 		<main class="mainCatalogo">
 			<h1>Catalogo</h1>
+			
+
 			<!-- veiculos -->
-				<div class="catalogo-container">
+			<div class="catalogo-container">
 				{% for v in veiculos %}
-				<div class="item-card">
+				<div class="item-card"
+					data-marca="{{ v.marca|lower }}"
+					data-modelo="{{ v.modelo|lower }}"
+					data-cor="{{ v.cor|lower }}"
+					data-ano="{{ v.ano }}"
+					data-preco="{{ v.preco }}"
+				>
 					<div class="item-img-wrapper">
 						<img
-							src="/ProjetoTurmaB-Consessionaria/public/assets/img/{{ v.imagem }}"
+							src="/public/assets/img/{{ v.imagem }}"
 							alt="{{ v.modelo }}" />
 					</div>
+
 					<div class="item-info">
 						<h2 class="item-titulo">{{ v.marca }} {{ v.modelo }}</h2>
 						<p class="item-subtitulo">{{ v.cor }} • {{ v.ano }}</p>
 
 						<p class="item-preco">R$ {{ v.preco|number_format(2, ',', '.') }}</p>
 
-						<a href="/ProjetoTurmaB-Consessionaria/veiculos/{{ v.id }}">
+						<a href="/veiculos/{{ v.id }}">
 							<button class="item-button">Ver detalhes</button>
 						</a>
 					</div>
 				</div>
-				{% endfor %}
+
+					{% for v in veiculos %}
+				<div class="item-card"
+					data-marca="{{ v.marca|lower }}"
+					data-modelo="{{ v.modelo|lower }}"
+					data-cor="{{ v.cor|lower }}"
+					data-ano="{{ v.ano }}"
+					data-preco="{{ v.preco }}">
+					<div class="item-img-wrapper">
+						<img
+							src="/public/assets/img/{{ v.imagem }}"
+							alt="{{ v.modelo }}" />
+					</div>
+	
+					<div class="item-info">
+						<h2 class="item-titulo">{{ v.marca }} {{ v.modelo }}</h2>
+						<p class="item-subtitulo">{{ v.cor }} • {{ v.ano }}</p>
+	
+						<p class="item-preco">R$ {{ v.preco|number_format(2, ',', '.') }}</p>
+	
+						<a href="/veiculos/{{ v.id }}">
+							<button class="item-button">Ver detalhes</button>
+						</a>
+					</div>
+				</div>
+
+			<div class="item-card"
+					data-marca="{{ v.marca|lower }}"
+					data-modelo="{{ v.modelo|lower }}"
+					data-cor="{{ v.cor|lower }}"
+					data-ano="{{ v.ano }}"
+					data-preco="{{ v.preco }}">
+					<div class="item-img-wrapper">
+						<img
+							src="/public/assets/img/{{ v.imagem }}"
+							alt="{{ v.modelo }}" />
+					</div>
+	
+					<div class="item-info">
+						<h2 class="item-titulo">{{ v.marca }} {{ v.modelo }}</h2>
+						<p class="item-subtitulo">{{ v.cor }} • {{ v.ano }}</p>
+	
+						<p class="item-preco">R$ {{ v.preco|number_format(2, ',', '.') }}</p>
+	
+						<a href="/veiculos/{{ v.id }}">
+							<button class="item-button">Ver detalhes</button>
+						</a>
+					</div>
+				</div>
+
+				<div class="item-card"
+					data-marca="{{ v.marca|lower }}"
+					data-modelo="{{ v.modelo|lower }}"
+					data-cor="{{ v.cor|lower }}"
+					data-ano="{{ v.ano }}"
+					data-preco="{{ v.preco }}">
+					<div class="item-img-wrapper">
+						<img
+							src="/public/assets/img/{{ v.imagem }}"
+							alt="{{ v.modelo }}" />
+					</div>
+	
+					<div class="item-info">
+						<h2 class="item-titulo">{{ v.marca }} {{ v.modelo }}</h2>
+						<p class="item-subtitulo">{{ v.cor }} • {{ v.ano }}</p>
+	
+						<p class="item-preco">R$ {{ v.preco|number_format(2, ',', '.') }}</p>
+	
+						<a href="/veiculos/{{ v.id }}">
+							<button class="item-button">Ver detalhes</button>
+						</a>
+					</div>
+				</div>
+
+				<div class="item-card"
+					data-marca="{{ v.marca|lower }}"
+					data-modelo="{{ v.modelo|lower }}"
+					data-cor="{{ v.cor|lower }}"
+					data-ano="{{ v.ano }}"
+					data-preco="{{ v.preco }}">
+					<div class="item-img-wrapper">
+						<img
+							src="/public/assets/img/{{ v.imagem }}"
+							alt="{{ v.modelo }}" />
+					</div>
+	
+					<div class="item-info">
+						<h2 class="item-titulo">{{ v.marca }} {{ v.modelo }}</h2>
+						<p class="item-subtitulo">{{ v.cor }} • {{ v.ano }}</p>
+	
+						<p class="item-preco">R$ {{ v.preco|number_format(2, ',', '.') }}</p>
+	
+						<a href="/veiculos/{{ v.id }}">
+							<button class="item-button">Ver detalhes</button>
+						</a>
+					</div>
+				</div>
+
+				<div class="item-card"
+					data-marca="{{ v.marca|lower }}"
+					data-modelo="{{ v.modelo|lower }}"
+					data-cor="{{ v.cor|lower }}"
+					data-ano="{{ v.ano }}"
+					data-preco="{{ v.preco }}">
+					<div class="item-img-wrapper">
+						<img
+							src="/public/assets/img/{{ v.imagem }}"
+							alt="{{ v.modelo }}" />
+					</div>
+	
+					<div class="item-info">
+						<h2 class="item-titulo">{{ v.marca }} {{ v.modelo }}</h2>
+						<p class="item-subtitulo">{{ v.cor }} • {{ v.ano }}</p>
+	
+						<p class="item-preco">R$ {{ v.preco|number_format(2, ',', '.') }}</p>
+	
+						<a href="/veiculos/{{ v.id }}">
+							<button class="item-button">Ver detalhes</button>
+						</a>
+					</div>
+				</div>
+
+				<div class="item-card"
+					data-marca="{{ v.marca|lower }}"
+					data-modelo="{{ v.modelo|lower }}"
+					data-cor="{{ v.cor|lower }}"
+					data-ano="{{ v.ano }}"
+					data-preco="{{ v.preco }}">
+					<div class="item-img-wrapper">
+						<img
+							src="/public/assets/img/{{ v.imagem }}"
+							alt="{{ v.modelo }}" />
+					</div>
+	
+					<div class="item-info">
+						<h2 class="item-titulo">{{ v.marca }} {{ v.modelo }}</h2>
+						<p class="item-subtitulo">{{ v.cor }} • {{ v.ano }}</p>
+	
+						<p class="item-preco">R$ {{ v.preco|number_format(2, ',', '.') }}</p>
+	
+						<a href="/veiculos/{{ v.id }}">
+							<button class="item-button">Ver detalhes</button>
+						</a>
+					</div>
+				</div>
+
+				<div class="item-card"
+					data-marca="{{ v.marca|lower }}"
+					data-modelo="{{ v.modelo|lower }}"
+					data-cor="{{ v.cor|lower }}"
+					data-ano="{{ v.ano }}"
+					data-preco="{{ v.preco }}">
+					<div class="item-img-wrapper">
+						<img
+							src="/public/assets/img/{{ v.imagem }}"
+							alt="{{ v.modelo }}" />
+					</div>
+	
+					<div class="item-info">
+						<h2 class="item-titulo">{{ v.marca }} {{ v.modelo }}</h2>
+						<p class="item-subtitulo">{{ v.cor }} • {{ v.ano }}</p>
+	
+						<p class="item-preco">R$ {{ v.preco|number_format(2, ',', '.') }}</p>
+	
+						<a href="/veiculos/{{ v.id }}">
+							<button class="item-button">Ver detalhes</button>
+						</a>
+					</div>
+				</div>
+
+				<div class="item-card"
+					data-marca="{{ v.marca|lower }}"
+					data-modelo="{{ v.modelo|lower }}"
+					data-cor="{{ v.cor|lower }}"
+					data-ano="{{ v.ano }}"
+					data-preco="{{ v.preco }}">
+					<div class="item-img-wrapper">
+						<img
+							src="/public/assets/img/{{ v.imagem }}"
+							alt="{{ v.modelo }}" />
+					</div>
+	
+					<div class="item-info">
+						<h2 class="item-titulo">{{ v.marca }} {{ v.modelo }}</h2>
+						<p class="item-subtitulo">{{ v.cor }} • {{ v.ano }}</p>
+	
+						<p class="item-preco">R$ {{ v.preco|number_format(2, ',', '.') }}</p>
+	
+						<a href="/veiculos/{{ v.id }}">
+							<button class="item-button">Ver detalhes</button>
+						</a>
+					</div>
+				</div>
+
+				<div class="item-card"
+					data-marca="{{ v.marca|lower }}"
+					data-modelo="{{ v.modelo|lower }}"
+					data-cor="{{ v.cor|lower }}"
+					data-ano="{{ v.ano }}"
+					data-preco="{{ v.preco }}">
+					<div class="item-img-wrapper">
+						<img
+							src="/public/assets/img/{{ v.imagem }}"
+							alt="{{ v.modelo }}" />
+					</div>
+	
+					<div class="item-info">
+						<h2 class="item-titulo">{{ v.marca }} {{ v.modelo }}</h2>
+						<p class="item-subtitulo">{{ v.cor }} • {{ v.ano }}</p>
+	
+						<p class="item-preco">R$ {{ v.preco|number_format(2, ',', '.') }}</p>
+	
+						<a href="/veiculos/{{ v.id }}">
+							<button class="item-button">Ver detalhes</button>
+						</a>
+					</div>
+				</div>
+
+				<div class="item-card"
+					data-marca="{{ v.marca|lower }}"
+					data-modelo="{{ v.modelo|lower }}"
+					data-cor="{{ v.cor|lower }}"
+					data-ano="{{ v.ano }}"
+					data-preco="{{ v.preco }}">
+					<div class="item-img-wrapper">
+						<img
+							src="/public/assets/img/{{ v.imagem }}"
+							alt="{{ v.modelo }}" />
+					</div>
+	
+					<div class="item-info">
+						<h2 class="item-titulo">{{ v.marca }} {{ v.modelo }}</h2>
+						<p class="item-subtitulo">{{ v.cor }} • {{ v.ano }}</p>
+	
+						<p class="item-preco">R$ {{ v.preco|number_format(2, ',', '.') }}</p>
+	
+						<a href="/veiculos/{{ v.id }}">
+							<button class="item-button">Ver detalhes</button>
+						</a>
+					</div>
+				</div>
+
+				<div class="item-card"
+					data-marca="{{ v.marca|lower }}"
+					data-modelo="{{ v.modelo|lower }}"
+					data-cor="{{ v.cor|lower }}"
+					data-ano="{{ v.ano }}"
+					data-preco="{{ v.preco }}">
+					<div class="item-img-wrapper">
+						<img
+							src="/public/assets/img/{{ v.imagem }}"
+							alt="{{ v.modelo }}" />
+					</div>
+	
+					<div class="item-info">
+						<h2 class="item-titulo">{{ v.marca }} {{ v.modelo }}</h2>
+						<p class="item-subtitulo">{{ v.cor }} • {{ v.ano }}</p>
+	
+						<p class="item-preco">R$ {{ v.preco|number_format(2, ',', '.') }}</p>
+	
+						<a href="/veiculos/{{ v.id }}">
+							<button class="item-button">Ver detalhes</button>
+						</a>
+					</div>
+				</div>
+
+			{% endfor %}
 			</div>
-			<!-- veiculos -->
+		</main>
 
 		<div class="botoesPaginacao">
-			<a class="seta" href="?page={{ pagina - 1 }}"> &lt; </a>
+            <a class="seta" href="?page={{ pagina - 1 }}"> &lt; </a>
 
-			<span>{{ pagina }}</span>
+            <span>{{ pagina }}</span>
 
-			<a class="seta" href="?page={{ pagina + 1 }}"> &gt; </a>
-		</div>
-		<footer>
-			<p>Ousadia Motors &copy; 2025</p>
-		</footer>
+            <a class="seta" href="?page={{ pagina + 1 }}"> &gt; </a>
+        </div>
+
+		<script>
+			// Script de filtro client-side
+			(function () {
+				const toggleBtn = document.getElementById('toggleFiltros');
+				const painel = document.getElementById('painelFiltros');
+				const aplicar = document.getElementById('aplicarFiltro');
+				const limpar = document.getElementById('limparFiltro');
+				const selMarca = document.getElementById('filtroMarca');
+				const selModelo = document.getElementById('filtroModelo');
+				const selCor = document.getElementById('filtroCor');
+
+				function qsAll(sel) { return Array.from(document.querySelectorAll(sel)); }
+
+				function popularOpcoes() {
+					const cards = qsAll('.item-card');
+					const marcas = new Set(), modelos = new Set(), cores = new Set();
+					cards.forEach(c => {
+						marcas.add(c.dataset.marca || '');
+						modelos.add(c.dataset.modelo || '');
+						cores.add(c.dataset.cor || '');
+					});
+					function fill(select, set) {
+						Array.from(set).filter(Boolean).sort().forEach(v => {
+							const opt = document.createElement('option');
+							opt.value = v;
+							opt.textContent = v.charAt(0).toUpperCase() + v.slice(1);
+							select.appendChild(opt);
+						});
+					}
+					fill(selMarca, marcas);
+					fill(selModelo, modelos);
+					fill(selCor, cores);
+				}
+
+				function aplicarFiltros() {
+					const marca = selMarca.value.trim().toLowerCase();
+					const modelo = selModelo.value.trim().toLowerCase();
+					const cor = selCor.value.trim().toLowerCase();
+					const anoMin = parseInt(document.getElementById('filtroAnoMin').value) || -Infinity;
+					const anoMax = parseInt(document.getElementById('filtroAnoMax').value) || Infinity;
+					const precoMin = parseFloat(document.getElementById('filtroPrecoMin').value) || -Infinity;
+					const precoMax = parseFloat(document.getElementById('filtroPrecoMax').value) || Infinity;
+
+					qsAll('.item-card').forEach(card => {
+						const cMarca = (card.dataset.marca || '').toLowerCase();
+						const cModelo = (card.dataset.modelo || '').toLowerCase();
+						const cCor = (card.dataset.cor || '').toLowerCase();
+						const cAno = parseInt(card.dataset.ano) || 0;
+						const cPreco = parseFloat(card.dataset.preco) || 0;
+
+						let ok = true;
+						if (marca && cMarca !== marca) ok = false;
+						if (modelo && cModelo !== modelo) ok = false;
+						if (cor && cCor !== cor) ok = false;
+						if (cAno < anoMin || cAno > anoMax) ok = false;
+						if (cPreco < precoMin || cPreco > precoMax) ok = false;
+
+						card.style.display = ok ? '' : 'none';
+					});
+				}
+
+				function limparFiltros() {
+					document.getElementById('formPesquisa').reset();
+					qsAll('.item-card').forEach(c => c.style.display = '');
+				}
+
+				document.addEventListener('DOMContentLoaded', () => {
+					popularOpcoes();
+					toggleBtn.addEventListener('click', () => {
+						painel.style.display = painel.style.display === 'none' ? 'block' : 'none';
+					});
+					aplicar.addEventListener('click', aplicarFiltros);
+					limpar.addEventListener('click', limparFiltros);
+				});
+			})();
+		</script>
     </body>
 </html>
