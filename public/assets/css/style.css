@@ -407,3 +407,48 @@ footer {
     background: #a9a9a9;
 }
 
+/* css do gerenciamento_de_veiculos */
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f2f3f5;
+    color: #333;
+}
+
+header {
+    background: #ffffff;
+    padding: 20px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.header-container {
+    width: 90%;
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo h1 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #333;
+}
+
+.create-btn {
+    background: #5b5b5b;
+    padding: 10px 16px;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.create-btn:hover {
+    background: #505050;
+}
