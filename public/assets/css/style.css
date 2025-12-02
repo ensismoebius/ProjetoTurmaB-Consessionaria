@@ -452,3 +452,72 @@ header {
 .create-btn:hover {
     background: #505050;
 }
+
+table {
+    width: 90%;
+    max-width: 1300px;
+    margin: 35px auto;
+    border-collapse: separate;
+    border-spacing: 0 8px; 
+}
+
+thead th {
+    text-align: left;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+}
+
+
+tbody tr {
+    background: #ffffff;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+    transition: 0.2s;
+}
+
+tbody tr:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+}
+
+tbody td {
+    padding: 14px 12px;
+    font-size: 14px;
+    color: #444;
+}
+
+tbody a {
+    color: #3b87c6;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.action-btn {
+    background: #e0e0e0;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 13px;
+    text-decoration: none;
+    color: #333;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.action-btn:hover {
+    background: #cacaca;
+}
+
+.delete-btn {
+    background: #d9534f;
+    color: white;
+}
+
+.delete-btn:hover {
+    background: #c64541;
+}
+
+td form {
+    display: inline-block;
+}
