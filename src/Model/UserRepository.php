@@ -39,15 +39,16 @@ class UserRepository
         return $stmt->rowCount() > 0;
     }
 
-    public function criar(string $nome, string $email, string $senha): bool
+    public function criar(string $nome, string $email, string $senha, int $role): bool
     {
         $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
         $stmt = $this->conexao->prepare(
-            "INSERT INTO USUARIOS (nome, email, senha) VALUES (:nome, :email, :senha)"
+            "INSERT INTO USUARIOS (nome, email, senha, role) VALUES (:nome, :email, :senha, :role)"
         );
         $stmt->bindValue(":nome", $nome);
         $stmt->bindValue(":email", $email);
         $stmt->bindValue(":senha", $senhaHash);
+        $stmt->bindValue(":role", $role);
 
         return $stmt->execute();
     }

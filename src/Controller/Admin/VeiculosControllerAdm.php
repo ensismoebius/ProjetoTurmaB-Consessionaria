@@ -4,7 +4,7 @@ namespace Concessionaria\Projetob\Controller\Admin;
 use PDO;
 use Concessionaria\Projetob\Model\Database;
 
-class VeiculosControllerADM
+class VeiculosControllerAdm
 {
 
     private \PDO $conexao;
@@ -19,7 +19,14 @@ class VeiculosControllerADM
     }
 
     public function gerenciamento_de_veiculos()
-    {   
+    { 
+        
+        session_start();
+        if(!isset($_SESSION['role']) !== 1){
+            echo "Acesso negado. Você não tem permissão para acessar esta página.";
+            return;
+        }
+
         $stmt = $this->conexao->query("SELECT id_veiculos, marca, modelo, preco, ano FROM VEICULOS ORDER BY id_veiculos DESC");
         $veiculos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -27,6 +34,13 @@ class VeiculosControllerADM
     }
     public function showCreateForm()
     {
+
+        session_start();
+        if(!isset($_SESSION['role']) !== 1){
+            echo "Acesso negado. Você não tem permissão para acessar esta página.";
+            return;
+        }
+
         echo $this->ambiente->render("Admin/veiculos/form.html");
     }
 
@@ -113,6 +127,13 @@ class VeiculosControllerADM
 
     public function formEditar(array $data)
     {
+
+        session_start();
+        if(!isset($_SESSION['role']) !== 1){
+            echo "Acesso negado. Você não tem permissão para acessar esta página.";
+            return;
+        }
+
         $id = (int) ($data['id_veiculos'] ?? 0); //consulta o id, se existe ou nao
         if ($id <= 0) {
             echo "Id inválido";
@@ -134,6 +155,13 @@ class VeiculosControllerADM
 
     public function atualizarVeiculo(array $data)
     {
+
+        session_start();
+        if(!isset($_SESSION['role']) !== 1){
+            echo "Acesso negado. Você não tem permissão para acessar esta página.";
+            return;
+        }
+
         $id = (int) ($data['id_veiculos'] ?? 0);
         if ($id <= 0) {
             echo "Id inválido";
@@ -194,6 +222,13 @@ class VeiculosControllerADM
 
     public function removerVeiculo(array $data)
     {
+
+        session_start();
+        if(!isset($_SESSION['role']) !== 1){
+            echo "Acesso negado. Você não tem permissão para acessar esta página.";
+            return;
+        }
+
         $id = (int) ($data['id_veiculos'] ?? $data['id_veiculos'] ?? 0);
         if ($id <= 0) {
             echo "Id inválido";
