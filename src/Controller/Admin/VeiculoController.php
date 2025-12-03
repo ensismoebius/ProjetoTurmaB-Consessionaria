@@ -90,6 +90,34 @@ if (move_uploaded_file($_FILES["imagem"]["tmp_name"], $caminhoFinal)) {
     header("Location: /ProjetoTurmaB-Consessionaria/veiculos");
     exit;
 }
+public function showEditForm(int $id)
+{
+    
+    $conexao = new PDO(
+        "mysql:host=localhost;dbname=PRJ2DSB;charset=utf8",
+        "root",
+        ""
+    );
+    $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $sql = "SELECT * FROM veiculos WHERE id = :id";
+    $stmt = $conexao->prepare($sql);
+    $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+    $stmt->execute();
+
+    $veiculo = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$veiculo) {
+        echo "Veículo não encontrado!";
+        return;
+    }
+
+
+    echo $this->ambiente->render("Admin/veiculos/form.html", [
+        "veiculo" => $veiculo
+    ]);
+}
+
 
 
 }
