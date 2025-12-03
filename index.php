@@ -18,6 +18,8 @@ $roteador->post("/proposta", "PropostaController:enviar");
 $roteador->get("/editar", "Admin\\VeiculoController:showCreateForm");
 $roteador->post("/editar", "Admin\\VeiculoController:salvarVeiculo");
 $roteador->post("/logout", "AuthController:logout");
+// rota de Novos
+$roteador->get('/novos', 'Principal:novos');
 // rota Sobre Nós
 $roteador->get("/sobrenos", "Principal:sobrenos");
 // rotas de autenticação
