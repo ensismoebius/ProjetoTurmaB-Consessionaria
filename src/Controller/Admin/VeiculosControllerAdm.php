@@ -53,6 +53,8 @@ class VeiculosControllerAdm
         $descricao = $data["descricao"] ?? null;
         $ano = $data["ano"] ?? null;
         $cor = $data["cor"] ?? null;
+        $status = $data["status"] ?? "À venda";
+        $criado_em = date("Y-m-d H:i:s");
 
         if (!$marca || !$modelo || !$preco) {
             echo "Campos obrigatórios não enviados!";
@@ -96,23 +98,15 @@ class VeiculosControllerAdm
                 }
             }
 
-            $sql = "INSERT INTO VEICULOS(marca, modelo, preco, imagem, quilometragem, descricao, ano, cor)
-                VALUES (:marca, :modelo, :preco, :imagem, :quilometragem, :descricao, :ano, :cor)";
 
-            $stmt = $this->conexao->prepare($sql);
-            $stmt->bindValue(":marca", $marca);
-            $stmt->bindValue(":modelo", $modelo);
-            $stmt->bindValue(":preco", $preco);
-            $stmt->bindValue(":imagem", $imagem);
-            $stmt->bindValue(":quilometragem", $quilometragem);
             // continue com os outros bindValue normalmente
             if (move_uploaded_file($_FILES["imagem"]["tmp_name"], $caminhoFinal)) {
                 $imagem = $nomeArquivo;
             }
         }
         
-        $sql = "INSERT INTO VEICULOS(marca, modelo, preco, imagem, quilometragem, descricao, ano, cor)
-            VALUES (:marca, :modelo, :preco, :imagem, :quilometragem, :descricao, :ano, :cor)";
+        $sql = "INSERT INTO VEICULOS(marca, modelo, preco, imagem, quilometragem, descricao, ano, cor, status, criado_em)
+            VALUES (:marca, :modelo, :preco, :imagem, :quilometragem, :descricao, :ano, :cor, :status, :criado_em)";
 
         $stmt = $this->conexao->prepare($sql);
         $stmt->bindValue(":marca", $marca);
@@ -123,7 +117,8 @@ class VeiculosControllerAdm
         $stmt->bindValue(":descricao", $descricao);
         $stmt->bindValue(":ano", $ano);
         $stmt->bindValue(":cor", $cor);
-
+        $stmt->bindValue(":status", $status);
+        $stmt->bindValue(":criado_em", $criado_em);
         $stmt->execute();
 
         header("Location: /ProjetoTurmaB-Consessionaria/veiculos");
@@ -180,6 +175,8 @@ class VeiculosControllerAdm
         $quilometragem = $data['quilometragem'] ?? null;
         $ano = $data['ano'] ?? null;
         $cor = $data['cor'] ?? null;
+        $status = $data["status"] ?? null;
+        $criado_em = date("Y-m-d H:i:s");
 
         $pasta = $_SERVER["DOCUMENT_ROOT"] . "/ProjetoTurmaB-Consessionaria/public/assets/img/"; //vai pra pasta de imgs
         if (!is_dir($pasta)) {
@@ -196,7 +193,7 @@ class VeiculosControllerAdm
         }
         
 
-        $sql = "UPDATE VEICULOS SET marca = :marca, modelo = :modelo, preco = :preco, descricao = :descricao, quilometragem = :quilometragem, ano = :ano, cor = :cor";
+        $sql = "UPDATE VEICULOS SET marca = :marca, modelo = :modelo, preco = :preco, descricao = :descricao, quilometragem = :quilometragem, ano = :ano, cor = :cor, status = :status, criado_em = :criado_em";
         if ($imagem) {
             $sql .= ", imagem = :imagem";
         }
@@ -210,6 +207,8 @@ class VeiculosControllerAdm
         $stmt->bindValue(":quilometragem", $quilometragem);
         $stmt->bindValue(':ano', $ano);
         $stmt->bindValue(':cor', $cor);
+        $stmt->bindValue(":status", $status);
+        $stmt->bindValue(":criado_em", $criado_em);
         if ($imagem) {
             $stmt->bindValue(':imagem', $imagem);
         }
@@ -243,4 +242,19 @@ class VeiculosControllerAdm
         header("Location: /ProjetoTurmaB-Consessionaria/admin/veiculos");
         exit;
     }
+
+    public function novos()
+{
+    $conexao = \Concessionaria\Projetob\Model\Database::getConexao();
+
+    // Ajuste essa condição conforme sua tabela
+    $sql = "SELECT * FROM VEICULOS WHERE status = 'novo' ORDER BY id DESC";
+    $stmt = $conexao->query($sql);
+    $veiculosNovos = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+    echo $this->ambiente->render("veiculos/novos.html", [
+        "veiculos" => $veiculosNovos
+    ]);
+}
+
 }

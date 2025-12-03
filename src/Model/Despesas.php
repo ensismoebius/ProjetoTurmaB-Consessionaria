@@ -2,7 +2,7 @@
 
 namespace Concessionaria\Projetob\Model;
 
-class Contacorrente
+class Despesas
 {
 
     public int $id_despesas;
