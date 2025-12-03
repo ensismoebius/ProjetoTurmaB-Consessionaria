@@ -80,8 +80,11 @@
         </label>
         {% endif %}
 
-        <label>Imagens:
-            <input type="file" name="imagem">
+        <label class="escolherArquivo">Imagens: 
+            <input type="file" id="imagem" name="imagem" onchange="document.getElementById('file-name').textContent = this.files[0].name">
+            <label for="imagem">Escolher arquivo:
+                <span id="file-name">nenhum selecionado</span>
+            </label>
         </label>
 
         <input type="submit" value="Confirmar">

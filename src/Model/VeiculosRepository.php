@@ -31,7 +31,9 @@ class VeiculosRepository
             $veiculo->cor = $item['cor'];
             $veiculo->preco = $item["preco"];
             $veiculo->quilometragem = $item["quilometragem"];
-
+            $veiculo->status = $dados["status"];
+            $veiculo->criado_em = $dados["criado_em"];
+            
             $listaVeiculos[] = $veiculo;
         }
 
@@ -54,6 +56,8 @@ class VeiculosRepository
             $veiculo->cor = $item["cor"];
             $veiculo->preco = $item["preco"];
             $veiculo->quilometragem = $item["quilometragem"];
+            $veiculo->status = $dados["status"];
+            $veiculo->criado_em = $dados["criado_em"];
 
             $listaVeiculos[] = $veiculo;
         }
@@ -82,6 +86,8 @@ class VeiculosRepository
         $veiculo->cor = $dados["cor"];
         $veiculo->preco = $dados["preco"];
         $veiculo->quilometragem = $dados["quilometragem"];
+        $veiculo->status = $dados["status"];
+        $veiculo->criado_em = $dados["criado_em"];
 
         return $veiculo;
     }
@@ -116,6 +122,8 @@ class VeiculosRepository
             $veiculo->cor = $item['cor'];
             $veiculo->preco = $item["preco"];
             $veiculo->quilometragem = $item["quilometragem"];
+            $veiculo->status = $dados["status"];
+            $veiculo->criado_em = $dados["criado_em"];
 
             $listaVeiculos[] = $veiculo;
         }
