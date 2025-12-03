@@ -38,6 +38,12 @@
         $nome = trim($_POST['Nome_Usuario'] ?? '');
         $email = trim($_POST['Email_Usuario'] ?? '');
         $senha = $_POST['Senha_Usuario'] ?? '';
+        if(strtolower($email) === "ousadiamotors@gmail.com"){
+            $role = 1; // Administrador
+        } else{
+            $role = 2; // Usuário comum
+        }
+
 
         if (empty($nome) || empty($email) || empty($senha)) {
             echo $this->ambiente->render('register.html', [
@@ -71,7 +77,7 @@
             return;
         }
 
-        if ($user->criar($nome, $email, $senha)) {
+        if ($user->criar($nome, $email, $senha, $role)) {
             $_SESSION['tipo_msg'] = 'sucesso';
             $_SESSION['msg'] = 'Cadastro concluído com sucesso.';
             header('Location: /ProjetoTurmaB-Consessionaria/login');
@@ -129,6 +135,7 @@
 
         if($usuario && password_verify($senha, $usuario['senha'])){
             $_SESSION["user_id"] = $usuario['id'];
+            $_SESSION["role"] = $usuario['role'];
             header("Location: /ProjetoTurmaB-Consessionaria/");
             exit();
         }
