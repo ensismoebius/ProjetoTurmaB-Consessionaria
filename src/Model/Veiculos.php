@@ -16,5 +16,5 @@ class Veiculos
     public ?float $preco;
     public ?int $quilometragem;
     public string $status;
-    public int $criado_em;
+    public string $criado_em;
 }

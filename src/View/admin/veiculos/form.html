@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% if isEdit %}
+    {% set isEdit = veiculo is defined %}
+    <title>
+        {% if isEdit %}
             Editar
         {% else %}
             Adicionar
@@ -26,7 +28,6 @@
     <br>
 
     <div id="formadicionarveiculo">
-    {% set isEdit = veiculo is defined %}
     <form action="{% if isEdit %}/ProjetoTurmaB-Consessionaria/admin/veiculos/{{ veiculo.id_veiculos }}/update{% else %}/ProjetoTurmaB-Consessionaria/admin/veiculos/store{% endif %}" method="POST" enctype="multipart/form-data">
 
         {% if isEdit %}
@@ -61,8 +62,29 @@
             <input type="text" name="quilometragem" value="{{ veiculo.quilometragem|default('') }}">
         </label>
 
-        <label>Imagens:
-            <input type="file" name="imagem">
+        <input type="hidden" name="status" value="{{ veiculo.status|default('A venda') }}">
+
+        {% if isEdit %}
+        <label>Status:
+            <select name="status">
+                <option value="A venda" {% if veiculo.status == "A venda" %}selected{% endif %}>A venda</option>
+                <option value="Em negociação" {% if veiculo.status == "Em negociação" %}selected{% endif %}>Em negociação</option>
+                <option value="Vendido" {% if veiculo.status == "Vendido" %}selected{% endif %}>Vendido</option>
+            </select>
+        </label>
+        {% endif %}
+
+        {% if isEdit %}
+        <label>Criado em:
+            <input type="text" name="criado_em" value="{{ veiculo.criado_em|date('d/m/Y H:i')|default('') }}" readonly>
+        </label>
+        {% endif %}
+
+        <label class="escolherArquivo">Imagens: 
+            <input type="file" id="imagem" name="imagem" onchange="document.getElementById('file-name').textContent = this.files[0].name">
+            <label for="imagem">Escolher arquivo:
+                <span id="file-name">nenhum selecionado</span>
+            </label>
         </label>
 
         <input type="submit" value="Confirmar">

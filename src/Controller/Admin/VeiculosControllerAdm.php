@@ -39,8 +39,8 @@ class VeiculosControllerADM
         $descricao = $data["descricao"] ?? null;
         $ano = $data["ano"] ?? null;
         $cor = $data["cor"] ?? null;
-        $status = $data["status"] ?? null;
-        $criado_em = $data["criado_em"] ?? null;
+        $status = $data["status"] ?? "À venda";
+        $criado_em = date("Y-m-d H:i:s");
 
         if (!$marca || !$modelo || !$preco) {
             echo "Campos obrigatórios não enviados!";
@@ -148,7 +148,7 @@ class VeiculosControllerADM
         $ano = $data['ano'] ?? null;
         $cor = $data['cor'] ?? null;
         $status = $data["status"] ?? null;
-        $criado_em = $data["criado_em"] ?? null;
+        $criado_em = date("Y-m-d H:i:s");
 
         $pasta = $_SERVER["DOCUMENT_ROOT"] . "/ProjetoTurmaB-Consessionaria/public/assets/img/"; //vai pra pasta de imgs
         if (!is_dir($pasta)) {
