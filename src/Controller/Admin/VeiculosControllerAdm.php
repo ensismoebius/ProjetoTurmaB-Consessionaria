@@ -207,4 +207,19 @@ class VeiculosControllerADM
         header("Location: /ProjetoTurmaB-Consessionaria/admin/veiculos");
         exit;
     }
+
+    public function novos()
+{
+    $conexao = \Concessionaria\Projetob\Model\Database::getConexao();
+
+    // Ajuste essa condição conforme sua tabela
+    $sql = "SELECT * FROM VEICULOS WHERE status = 'novo' ORDER BY id DESC";
+    $stmt = $conexao->query($sql);
+    $veiculosNovos = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+    echo $this->ambiente->render("veiculos/novos.html", [
+        "veiculos" => $veiculosNovos
+    ]);
+}
+
 }
