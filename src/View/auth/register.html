@@ -12,6 +12,74 @@
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
 		<!-- favor colocar o css dentro do auth.css -->
+
+		<script type="module">
+    		import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+    		import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
+
+    		const firebaseConfig = { 
+    		    apiKey: "AIzaSyCMqZjdSzlPDrAJdBVJ16QjThf6ZyHtW0g",
+    		    authDomain: "cadastro-55c44.firebaseapp.com",
+    		    projectId: "cadastro-55c44",
+    		    storageBucket: "cadastro-55c44.appspot.com",
+    		    messagingSenderId: "131801255024",
+    		    appId: "1:131801255024:web:7687ce29be776cf01c38b5",
+    		    measurementId: "G-S0TTSBNYT6"
+    		};
+		
+    		const app = initializeApp(firebaseConfig);
+    		const auth = getAuth(app);
+    		const provider = new GoogleAuthProvider();
+		
+    		document.getElementById("google").addEventListener("click", (event) => {
+    		    event.preventDefault();
+    		    console.log("Botão Google clicado");
+			
+    		    signInWithPopup(auth, provider)
+    		        .then(async (result) => {
+    		            const user = result.user;
+    		            console.log("Usuário autenticado no Firebase:", user.email);
+					
+    		            const response = await fetch("/ProjetoTurmaB-Consessionaria/registerGoogle", {
+    		                method: "POST",
+    		                headers: { "Content-Type": "application/json" },
+    		                body: JSON.stringify({
+    		                    nome: user.displayName,
+    		                    email: user.email,
+    		                    google_uid: user.uid
+    		                })
+    		            });
+					
+    		            console.log("Status da resposta:", response.status);
+    		            console.log("Response OK:", response.ok);
+					
+    		            const text = await response.text();
+    		            console.log("Resposta bruta:", text);
+					
+    		            let data;
+    		            try {
+    		                data = JSON.parse(text);
+    		                console.log("JSON parseado:", data);
+    		            } catch (parseError) {
+    		                console.error("Erro ao fazer parse JSON:", parseError);
+    		                alert("Erro: resposta do servidor não é JSON válido");
+    		                return;
+    		            }
+					
+    		            if (data.success === true) {
+    		                console.log("Sucesso! Redirecionando...");
+    		                window.location.href = "/ProjetoTurmaB-Consessionaria/";
+    		            } else {
+    		                console.error("Erro na resposta:", data);
+    		                alert(data.error || "Erro ao registrar com Google");
+    		            }
+    		        })
+    		        .catch((error) => {
+    		            console.error("Erro no Firebase/fetch:", error);
+    		            alert("Falha ao autenticar com Google: " + error.message);
+    		        });
+    		});
+		</script>
 	</head>
 	<body>
 		<!--CABEÇALHO PRINCIPAL (PARTE OBRIGATÓRIA DO SITE)-->
