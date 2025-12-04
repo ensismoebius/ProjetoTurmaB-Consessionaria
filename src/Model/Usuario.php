@@ -8,6 +8,7 @@ class Usuario
     public string $email;
     public string $senha;
     public ?int $role;
+    public ?string $google_uid;
 
     public function __construct()
     {
