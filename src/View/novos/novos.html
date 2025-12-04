@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Veiculos Novos</title>
+	<link rel="stylesheet" href="/ProjetoTurmaB-Consessionaria/public/assets/css/style.css" />
 </head>
 <body>
 		<div name="topo">
@@ -33,9 +34,8 @@
 						<li><a href="#">Seminovos</a></li>
 						<li><a href="#">Ofertas</a></li>
 						<li><a href="#">Serviços</a></li>
-						<li><a href="#">Novos</a></li>
-						<li><a href="#">Sobre Nós</a></li>
 						<li><a href="/ProjetoTurmaB-Consessionaria/veiculos">Catalogo</a></li>
+						<li><a href="/ProjetoTurmaB-Consessionaria/sobrenos">Sobre Nós</a></li>
 						{% if usuario is null %}
 						<li><a href="/ProjetoTurmaB-Consessionaria/login">Login</a></li>
 						<li><a href="/ProjetoTurmaB-Consessionaria/register">Cadastrar-se</a></li>
@@ -65,7 +65,7 @@
 		</div>
 
 		<main class="mainCatalogo">
-			<h1>veiculos novos</h1>
+			<h1>Veiculos novos</h1>
 			<!-- veiculos -->
 				<div class="catalogo-container">
 				{% for v in veiculos %}
