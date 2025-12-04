@@ -77,7 +77,7 @@
 		<p>Valor: R${{ veiculo.preco|number_format(2, ',', '.') }}</p>
 		<p>Status: {{ veiculo.status }}</p>
 		<p>Anúncio criado em: {{ veiculo.criado_em|date('d/m/Y H:i') }}</p>
-
-		<a href=""><button>Fazer Proposta (em breve)</button></a>
+    
+		<button onclick="window.location.href = '/ProjetoTurmaB-Consessionaria/proposta'">Fazer Proposta</button></a>
 	</body>
 </html>
