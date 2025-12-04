@@ -15,14 +15,14 @@ class VeiculosRepository
 
     public function buscarVeiculos(string $termo): array
     {
-        $stmt = $this->conexao->prepare("SELECT * FROM veiculos WHERE marca LIKE :termo OR modelo LIKE :termo OR cor LIKE :termo OR descricao LIKE :termo OR ano LIKE :termo");
+        $stmt = $this->conexao->prepare("SELECT * FROM VEICULOS WHERE marca LIKE :termo OR modelo LIKE :termo OR cor LIKE :termo OR descricao LIKE :termo OR ano LIKE :termo");
         $stmt->bindValue(':termo', "%$termo%");
         $stmt->execute();
 
         $listaVeiculos = [];
         while ($item = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $veiculo = new Veiculos();
-            $veiculo->id = $item['id'];
+            $veiculo->id = $item['id_veiculos'];
             $veiculo->imagem = $item['imagem'];
             $veiculo->marca = $item['marca'];
             $veiculo->modelo = $item['modelo'];
@@ -31,7 +31,9 @@ class VeiculosRepository
             $veiculo->cor = $item['cor'];
             $veiculo->preco = $item["preco"];
             $veiculo->quilometragem = $item["quilometragem"];
-
+            $veiculo->status = $item["status"] ?? "À venda";
+            $veiculo->criado_em = $item["criado_em"] ?? "";
+            
             $listaVeiculos[] = $veiculo;
         }
 
@@ -40,12 +42,12 @@ class VeiculosRepository
 
     public function veiculosSelectAll(): array
     {
-        $stmt = $this->conexao->query("SELECT * FROM veiculos");
+        $stmt = $this->conexao->query("SELECT * FROM VEICULOS");
         $listaVeiculos = [];
 
         while ($item = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $veiculo = new Veiculos();
-            $veiculo->id = $item["id"];
+            $veiculo->id = $item["id_veiculos"];
             $veiculo->imagem = $item["imagem"];
             $veiculo->marca = $item["marca"];
             $veiculo->modelo = $item["modelo"];
@@ -54,6 +56,8 @@ class VeiculosRepository
             $veiculo->cor = $item["cor"];
             $veiculo->preco = $item["preco"];
             $veiculo->quilometragem = $item["quilometragem"];
+            $veiculo->status = $item["status"] ?? "À venda";
+            $veiculo->criado_em = $item["criado_em"] ?? "";
 
             $listaVeiculos[] = $veiculo;
         }
@@ -62,7 +66,7 @@ class VeiculosRepository
 
     public function veiculosDetalhes(int $id): ?Veiculos
     {
-        $stmt = $this->conexao->prepare("SELECT * FROM veiculos WHERE id = :id");
+        $stmt = $this->conexao->prepare("SELECT * FROM VEICULOS WHERE id_veiculos = :id");
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
 
@@ -73,7 +77,7 @@ class VeiculosRepository
         }
 
         $veiculo = new Veiculos();
-        $veiculo->id = $dados["id"];
+        $veiculo->id = $dados["id_veiculos"];
         $veiculo->imagem = $dados["imagem"];
         $veiculo->marca = $dados["marca"];
         $veiculo->modelo = $dados["modelo"];
@@ -82,13 +86,15 @@ class VeiculosRepository
         $veiculo->cor = $dados["cor"];
         $veiculo->preco = $dados["preco"];
         $veiculo->quilometragem = $dados["quilometragem"];
+        $veiculo->status = $dados["status"] ?? "À venda";
+        $veiculo->criado_em = $dados["criado_em"] ?? "";
 
         return $veiculo;
     }
 
     public function galeriaImagens(int $id): array
     {
-        $stmt = $this->conexao->prepare("SELECT arquivo FROM veiculos_imagens WHERE id = :id");
+        $stmt = $this->conexao->prepare("SELECT arquivo FROM VEICULOS_IMAGENS WHERE veiculoimg_id = :id");
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
 
@@ -99,10 +105,10 @@ class VeiculosRepository
     {
         $offset = ($pagina - 1) * $limite;
 
-        $stmt = $this->conexao->prepare("SELECT * FROM veiculos LIMIT :offset, :limite");
+        $stmt = $this->conexao->prepare("SELECT * FROM VEICULOS LIMIT :offset, :limite");
         $stmt->bindValue(':limite', $limite, PDO::PARAM_INT);
         $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
-        $stmt->execute();
+        $stmt->execute(); 
 
         $listaVeiculos = [];
         while ($item = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -116,6 +122,8 @@ class VeiculosRepository
             $veiculo->cor = $item['cor'];
             $veiculo->preco = $item["preco"];
             $veiculo->quilometragem = $item["quilometragem"];
+            $veiculo->status = $item["status"] ?? "À venda";
+            $veiculo->criado_em = $item["criado_em"] ?? "";
 
             $listaVeiculos[] = $veiculo;
         }

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de veículos</title>
+    <link rel="stylesheet" href="/ProjetoTurmaB-Consessionaria/public/assets/css/style.css" />
+   
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo"><h1>Ousadia Motors — Admin</h1></div>
+            <nav class="navigation">
+                <ul>
+                    <li><a class="create-btn" href="/ProjetoTurmaB-Consessionaria/admin/veiculos/create">Adicionar Veículo</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Preço</th>
+                <th>Ano</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for v in veiculos %}
+            <tr>
+                <td>{{ v.id_veiculos }}</td>
+                <td>{{ v.marca }}</td>
+                <td><a href="/ProjetoTurmaB-Consessionaria/veiculos/{{ v.id_veiculos }}">{{ v.modelo }}</a></td>
+                <td>R$ {{ v.preco }}</td>
+                <td>{{ v.ano }}</td>    
+                <td>
+                    <a class="action-btn" href="/ProjetoTurmaB-Consessionaria/admin/veiculos/{{ v.id_veiculos }}/edit">Editar</a>
+                    <form  action="/ProjetoTurmaB-Consessionaria/admin/veiculos/{{ v.id_veiculos }}/delete" method="POST" onsubmit="return confirm('Deseja realmente excluir este veículo?');">
+                        <input type="hidden" name="id" value="{{ v.id }}">
+                        <button class="action-btn delete-btn" type="submit">Remover</button>
+                    </form>
+                </td>
+            </tr>
+            {% else %}
+            <tr><td colspan="6">Nenhum veículo encontrado.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

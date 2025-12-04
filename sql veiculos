@@ -30,3 +30,10 @@ insert into veiculos(marca, modelo, ano, preco, quilometragem, descricao, cor, i
 ('Fiat', 'Toro Freedom', 2020, 118900.00, 29000, 'Picape urbana moderna.', 'Cinza', 'fiattoro.jpg'),
 ('Volkswagen', 'T-Cross Comfortline', 2021, 124900.00, 17000, 'SUV moderno, super econômico.', 'Preto', 'tcross.jpg'),
 ('Renault', 'Kwid Zen', 2022, 47900.00, 9000, 'Compacto econômico, quase zero.', 'Branco', 'kwidzen.jpg');
+
+CREATE TABLE VEICULOS_IMAGENS(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    veiculoimg_id INT NOT NULL,
+   	arquivo VARCHAR(255) NOT NULL,
+    FOREIGN KEY (veiculoimg_id) REFERENCES VEICULOS(id_veiculos)
+);

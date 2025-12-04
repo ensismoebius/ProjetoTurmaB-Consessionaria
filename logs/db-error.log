@@ -1,0 +1,10 @@
+2025-11-30 03:06:10 - Falha ao conectar ao banco: SQLSTATE[HY000] [1049] Unknown database 'consessionaria' | DSN: mysql:host=localhost;dbname=consessionaria;charset=utf8mb4 | USER: root
+2025-11-30 03:06:11 - Falha ao conectar ao banco: SQLSTATE[HY000] [1049] Unknown database 'consessionaria' | DSN: mysql:host=localhost;dbname=consessionaria;charset=utf8mb4 | USER: root
+2025-11-30 03:06:14 - Falha ao conectar ao banco: SQLSTATE[HY000] [1049] Unknown database 'consessionaria' | DSN: mysql:host=localhost;dbname=consessionaria;charset=utf8mb4 | USER: root
+2025-11-30 03:07:46 - Falha ao conectar ao banco: SQLSTATE[HY000] [1049] Unknown database 'prj2dsb' | DSN: mysql:host=localhost;dbname=PRJ2DSB;charset=utf8mb4 | USER: root
+2025-11-30 03:07:46 - Falha ao conectar ao banco: SQLSTATE[HY000] [1049] Unknown database 'prj2dsb' | DSN: mysql:host=localhost;dbname=PRJ2DSB;charset=utf8mb4 | USER: root
+2025-11-30 03:07:49 - Falha ao conectar ao banco: SQLSTATE[HY000] [1049] Unknown database 'prj2dsb' | DSN: mysql:host=localhost;dbname=PRJ2DSB;charset=utf8mb4 | USER: root
+2025-11-30 03:07:50 - Falha ao conectar ao banco: SQLSTATE[HY000] [1049] Unknown database 'prj2dsb' | DSN: mysql:host=localhost;dbname=PRJ2DSB;charset=utf8mb4 | USER: root
+2025-11-30 03:07:50 - Falha ao conectar ao banco: SQLSTATE[HY000] [1049] Unknown database 'prj2dsb' | DSN: mysql:host=localhost;dbname=PRJ2DSB;charset=utf8mb4 | USER: root
+2025-11-30 03:07:51 - Falha ao conectar ao banco: SQLSTATE[HY000] [1049] Unknown database 'prj2dsb' | DSN: mysql:host=localhost;dbname=PRJ2DSB;charset=utf8mb4 | USER: root
+2025-11-30 03:07:51 - Falha ao conectar ao banco: SQLSTATE[HY000] [1049] Unknown database 'prj2dsb' | DSN: mysql:host=localhost;dbname=PRJ2DSB;charset=utf8mb4 | USER: root

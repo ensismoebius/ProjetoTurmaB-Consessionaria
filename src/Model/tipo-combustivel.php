@@ -1,7 +1,7 @@
 <?php
-    namespace Concessionaria\Projetob\Model;
+namespace Concessionaria\Projetob\Model;
 
-class Combustivel
+class Tipo_Combustivel
 {
     public int $idCombustivel;
     public string $descricao;

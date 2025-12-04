@@ -2,17 +2,22 @@
 namespace Concessionaria\Projetob\Controller;
 use Concessionaria\Projetob\Model\Proposta;
 use Concessionaria\Projetob\Model\PropostaModel;
+use Concessionaria\Projetob\Model\Database;
 
 class PropostaController
 {
     private \Twig\Environment $ambiente;
     private \Twig\Loader\FilesystemLoader $carregador;
+    private \PDO $conexao;
 
-    public function __construct()
+
+    public function __construct($router)
     {
-        $this->carregador = new \Twig\Loader\FilesystemLoader("./src/View");
+        $this->carregador = new \Twig\Loader\FilesystemLoader("./src/View/propostas");
 
         $this->ambiente = new \Twig\Environment($this->carregador);
+
+        $this->conexao = Database::getConexao();
     }
 
     public function inicio()
@@ -23,15 +28,16 @@ class PropostaController
     {
         $proposta = new Proposta();
         session_start();
-        $proposta->veiculo = $_SESSION['veiculo'];
         $proposta->nome = $_POST['nome'];
         $proposta->email = $_POST['email'];
-        $proposta->opcao = $_POST['opcao'];
-        $proposta->data_proposta = $_POST['data'];
 
-        $bd = new PropostaModel();
+        $bd = new PropostaModel($this->conexao);
+
         $bd->salvarProposta($proposta);
-        header("https://formspree.io/f/mbljrnkp");
+
+        $req = curl_init();
+        curl_setopt($req,  CURLOPT_CUSTOMREQUEST, 'POST');
+        curl_setopt($req,  CURLOPT_URL, 'https://formspree.io/f/mbljrnkp');
     }
 }
 ?>

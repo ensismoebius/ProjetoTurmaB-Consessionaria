@@ -1,38 +1,34 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Início - Ousadia Motors</title>
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
-		<link
-			rel="stylesheet"
-			href="/ProjetoTurmaB-Consessionaria/public/assets/css/style.css" />
-		<!-- favor colocar o css dentro do style.css -->
-	</head>
-	<body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veiculos Novos</title>
+	<link rel="stylesheet" href="/ProjetoTurmaB-Consessionaria/public/assets/css/style.css" />
+</head>
+<body>
 		<div name="topo">
 			<header id="cabecalho">
 				<h1>Ousadia Motors</h1>
 				<hr />
 				<nav id="menu-container">
-					<!-- barra de pesquisa -->
-					<form action="/ProjetoTurmaB-Consessionaria/veiculos/pesquisar" method="GET">
+					<!-- modelo da barra de pesquisa (necessária de ser colocada em algumas páginas pra gente poder pesquisar, igual no mercado livre por exemplo)-->
+					<form action="/ProjetoTurmaB-Consessionaria/veiculos/pesquisar" method="GET" id="formPesquisa">
+						<button type="button" class="btnFiltrar" id="toggleFiltros">Filtrar ▾</button>
 						<input
 							type="text"
 							name="q"
 							id="barraPesquisa"
 							placeholder="Pesquisar marca, modelo, cor..." />
 						<button class="btnPesquisar">Pesquisar</button>
+						
 						{% if pesquisa is defined %}
 						<p>Resultados para: "{{ pesquisa }}"</p>
 						{% endif %} {% if pesquisa is defined and veiculos is empty %}
 						<p id="pesquisaNaoEncontrada">Nenhum veículo encontrado.</p>
 						{% endif %}
 					</form>
-					<!-- -->
+					<!-- fim do modelo -->
 					<ul class="menu">
 						<li><a href="/ProjetoTurmaB-Consessionaria/">Home</a></li>
 						<li><a href="/ProjetoTurmaB-Consessionaria/seminovos">Seminovos</a></li>
@@ -70,26 +66,17 @@
 			</header>
 		</div>
 
-		<section class="banner-slider">
-    		<div class="slide"><img src="/ProjetoTurmaB-Consessionaria/img/slide1.png" /></div>
-    		<div class="slide"><img src="/ProjetoTurmaB-Consessionaria/img/slide2.png" /></div>
-    		<div class="slide"><img src="/ProjetoTurmaB-Consessionaria/img/slide3.png" /></div>
-		</section>
-
-
-		{% if usuario is not null %}
-		<li><p class="msgBoasVindas">Bem-vindo, {{ usuario.nome }}!</p></li>
-		{% endif %}
-		<main class="mainInicio">
+		<main class="mainSeminovos">
+			<h1>Veiculos seminovos</h1>
 			<!-- veiculos -->
-			<h1 class="tituloSessao">Veículos em destaque</h1>
-			<div class="linha-veiculos">
+				<div class="seminovos-container">
 				{% for v in veiculos %}
 				<div class="item-card">
 					<div class="item-img-wrapper">
-						<img src="/ProjetoTurmaB-Consessionaria/public/assets/img/{{ v.imagem }}" alt="{{ v.modelo }}">
+						<img
+							src="/ProjetoTurmaB-Consessionaria/public/assets/img/{{ v.imagem }}"
+							alt="{{ v.modelo }}" />
 					</div>
-
 					<div class="item-info">
 						<h2 class="item-titulo">{{ v.marca }} {{ v.modelo }}</h2>
 						<p class="item-subtitulo">{{ v.cor }} • {{ v.ano }}</p>
@@ -104,25 +91,16 @@
 				{% endfor %}
 			</div>
 			<!-- veiculos -->
-		</main>
 
-	<section class="servicos-especializados">
-    	<div class="servicos-texto">
-        	<h2>Serviços especializados</h2>
-        	<p>
-            	A Ousadia Motors tem tudo o que você precisa para garantir que você dirija 
-            	seu veículo satisfeito, tranquilo e seguro.
-        	</p>
-    	</div>
+		<div class="botoesPaginacao">
+			<a class="seta" href="?page={{ pagina - 1 }}"> &lt; </a>
 
-    	<div class="servicos-imagem">
-        	<img src="/ProjetoTurmaB-Consessionaria/img/servicos.png">	
-    	</div>
-	</section>
+			<span>{{ pagina }}</span>
 
-
+			<a class="seta" href="?page={{ pagina + 1 }}"> &gt; </a>
+		</div>
 		<footer>
 			<p>Ousadia Motors &copy; 2025</p>
 		</footer>
-	</body>
+    </body>
 </html>

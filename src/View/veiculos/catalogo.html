@@ -19,13 +19,15 @@
 				<hr />
 				<nav id="menu-container">
 					<!-- modelo da barra de pesquisa (necessária de ser colocada em algumas páginas pra gente poder pesquisar, igual no mercado livre por exemplo)-->
-					<form action="/ProjetoTurmaB-Consessionaria/veiculos/pesquisar" method="GET">
+					<form action="/ProjetoTurmaB-Consessionaria/veiculos/pesquisar" method="GET" id="formPesquisa">
+						<button type="button" class="btnFiltrar" id="toggleFiltros">Filtrar ▾</button>
 						<input
 							type="text"
 							name="q"
 							id="barraPesquisa"
 							placeholder="Pesquisar marca, modelo, cor..." />
 						<button class="btnPesquisar">Pesquisar</button>
+						
 						{% if pesquisa is defined %}
 						<p>Resultados para: "{{ pesquisa }}"</p>
 						{% endif %} {% if pesquisa is defined and veiculos is empty %}
@@ -35,15 +37,16 @@
 					<!-- fim do modelo -->
 					<ul class="menu">
 						<li><a href="/ProjetoTurmaB-Consessionaria/">Home</a></li>
-						<li><a href="#">Seminovos</a></li>
+						<li><a href="/ProjetoTurmaB-Consessionaria/seminovos">Seminovos</a></li>
 						<li><a href="#">Ofertas</a></li>
 						<li><a href="#">Serviços</a></li>
-						<li><a href="#">Novos</a></li>
-						<li><a href="#">Sobre Nós</a></li>
+						<li><a href="/ProjetoTurmaB-Consessionaria/novos">Novos</a></li>
+						<li><a href="/ProjetoTurmaB-Consessionaria/proposta">Propostas</a></li>
 						<li><a href="/ProjetoTurmaB-Consessionaria/veiculos">Catalogo</a></li>
 						{% if usuario is null %}
 						<li><a href="/ProjetoTurmaB-Consessionaria/login">Login</a></li>
 						<li><a href="/ProjetoTurmaB-Consessionaria/register">Cadastrar-se</a></li>
+						<li><a href="/ProjetoTurmaB-Consessionaria/sobrenos">Sobre Nós</a></li>
 						{% endif %} {% if usuario is not null %}
 						<form
 							id="logout"
@@ -71,9 +74,8 @@
 
 		<main class="mainCatalogo">
 			<h1>Catalogo</h1>
-
 			<!-- veiculos -->
-			<div class="catalogo-container">
+				<div class="catalogo-container">
 				{% for v in veiculos %}
 				<div class="item-card">
 					<div class="item-img-wrapper">
@@ -81,7 +83,6 @@
 							src="/ProjetoTurmaB-Consessionaria/public/assets/img/{{ v.imagem }}"
 							alt="{{ v.modelo }}" />
 					</div>
-
 					<div class="item-info">
 						<h2 class="item-titulo">{{ v.marca }} {{ v.modelo }}</h2>
 						<p class="item-subtitulo">{{ v.cor }} • {{ v.ano }}</p>
@@ -99,7 +100,7 @@
 				</div>
 				{% endfor %}
 			</div>
-		</main>
+			<!-- veiculos -->
 
 		<div class="botoesPaginacao">
 			<a class="seta" href="?page={{ pagina - 1 }}"> &lt; </a>
@@ -108,5 +109,8 @@
 
 			<a class="seta" href="?page={{ pagina + 1 }}"> &gt; </a>
 		</div>
-	</body>
+		<footer>
+			<p>Ousadia Motors &copy; 2025</p>
+		</footer>
+    </body>
 </html>

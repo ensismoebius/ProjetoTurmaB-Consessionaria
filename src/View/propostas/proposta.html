@@ -4,11 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proposta</title>
+    <link rel="stylesheet" href="/ProjetoTurmaB-Consessionaria/public/assets/css/proposta.css">
 </head>
 <body>
-    <form action="https://formspree.io/f/mbljrnkp" method="POST">
+    <!--CABEÇALHO PRINCIPAL (PARTE OBRIGATÓRIA DO SITE)-->
+		<div name="topo">
+			<header id="cabecalho">
+				<h1>Ousadia Motors</h1>
+				<hr />
+				<nav id="menu-container">
+					<ul class="menu">
+						<li><a href="/ProjetoTurmaB-Consessionaria/">Home</a></li>
+						<li><a href="#">Seminovos</a></li>
+						<li><a href="#">Ofertas</a></li>
+						<li><a href="#">Serviços</a></li>
+						<li><a href="#">Novos</a></li>
+						<li><a href="#">Sobre Nós</a></li>
+					</ul>
+					<div id="icones-direita">
+						<a href="#" id="Agenda" title="Agenda"
+							><i class="fa-solid fa-calendar-days"></i
+						></a>
+						<a href="#" id="pin" title="Localização"><i class="fa-solid fa-map-pin"></i></a>
+						<a href="#" id="coracao" title="Favoritos"><i class="fa-solid fa-heart"></i></a>
+						<a href="#" id="carrinho" title="Carrinho"
+							><i class="fa-solid fa-cart-shopping"></i
+						></a>
+					</div>
+				</nav>
+				<hr />
+			</header>
+		</div>
+		<!--FIM DO CABEÇALHO PRINCIPAL-->
+    <form class="proposta-form" action="https://formspree.io/f/mbljrnkp" method="post">
         <label>Nome</label>
-        <input id="nome" type="text" name="name" placeholder="Digite seu nome" required>
+        <input id="nome" type="text" name="nome" placeholder="Digite seu nome" required>
 
         <label>Email</label>
         <input id="email" type="email" name="email" placeholder="Digite seu email" required>

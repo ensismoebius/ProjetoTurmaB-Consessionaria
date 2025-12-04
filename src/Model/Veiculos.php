@@ -4,6 +4,9 @@ namespace Concessionaria\Projetob\Model;
 use Concessionaria\Projetob\Model\Database;
 use PDO;
 
+use Concessionaria\Projetob\Model\Database;
+use PDO;
+
 class Veiculos
 {   
     public int $id;

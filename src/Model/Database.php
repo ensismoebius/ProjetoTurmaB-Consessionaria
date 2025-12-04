@@ -9,17 +9,17 @@ class Database
     private static ?PDO $conexao = null;
       private static string $charset = "utf8mb4";
 
-    /* Se for usar o banco de dados da escola, descomente essas variáveis e comente as configurações de ambiente local abaixo
-    private static string $host = "192.168.0.12";
-    private static string $dbname = "PRJ2DSB";
-    private static string $usuario = "Aluno2DS";
-    private static string $senha = "SenhaBD2";*/
+    
+    //private static string $host = "192.168.0.12";
+    //private static string $dbname = "PRJ2DSB";
+    //private static string $usuario = "Aluno2DS";
+    //private static string $senha = "SenhaBD2"; 
 
-    // Configurações de ambiente local (para usar em casa)
-    private static string $host = '';
-    private static string $dbname = '';
-    private static string $usuario = '';
-    private static string $senha = '';
+    //  Configurações de ambiente local (para usar em casa)
+     private static string $host = 'localhost';//
+     private static string $dbname = 'concessionaria';
+     private static string $usuario = 'root';
+     private static string $senha = '';
 
     private static function initializeConfig(): void
     {
