@@ -1,0 +1,186 @@
+/* CSS dedicado para a página proposta.html */
+
+:root{
+    --bg: #f7f7f7;
+    --card: #ffffff;
+    --text: #222;
+    --muted: #666;
+    --accent: #111;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    margin: 0;
+    padding: 0;
+}
+
+.proposta-form{
+    max-width: 900px;
+    margin: 48px auto;
+    background: var(--card);
+    padding: 28px;
+    border-radius: 1px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    box-sizing: border-box;
+}
+
+.proposta-form h1{
+    margin: 0 0 12px 0;
+    text-align: center;
+    color: var(--accent);
+}
+
+.proposta-form label{
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.proposta-form input[type="text"],
+.proposta-form input[type="email"],
+.proposta-form textarea{
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #e1e1e1;
+    border-radius: 1px;
+    margin-bottom: 16px;
+    font-size: 15px;
+    color: var(--text);
+    box-sizing: border-box ;
+}
+
+.proposta-form textarea{
+    min-height: 140px;
+    resize: vertical;
+}
+
+.proposta-form input:focus,
+.proposta-form textarea:focus{
+    outline: none;
+    border-color: rgba(0,0,0,0.2);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+}
+
+.proposta-form button{
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.proposta-form button:hover{
+    opacity: 0.95;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 640px){
+    .proposta-form{ margin: 20px; padding: 18px; }
+}
+
+#cabecalho h1 {
+	margin: 10px 0;
+	padding: 10px 0;
+	text-align: center;
+}
+
+#menu-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	gap: 40px; /* espaço entre a barra de pesquisa e o menu */
+}
+
+#menu-container form {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+}
+
+#barraPesquisa {
+	padding: 7px 10px;
+	width: 250px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+#menu-container form button {
+	padding: 7px 15px;
+	border: none;
+	background-color: black;
+	color: white;
+	cursor: pointer;
+	border-radius: 4px;
+	transition: 0.2s;
+}
+
+#menu-container form button:hover {
+	background-color: #444;
+}
+
+.menu {
+	display: flex;
+	list-style: none;
+	align-items: center;
+	padding: 0;
+	margin: 0;
+	gap: 20px;
+}
+
+.menu li a {
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+}
+
+.menu li a:hover {
+	color: #666;
+}
+
+#logout input {
+	padding: 5px 15px;
+	cursor: pointer;
+}
+
+#icones-direita {
+	position: absolute;
+	right: 40px;
+	top: 50%;
+	transform: translateY(-50%);
+	display: flex;
+	gap: 15px;
+}
+
+#icones-direita a {
+	color: black;
+	font-size: 18px;
+	text-decoration: none;
+	transition: 0.3s;
+}
+
+#icones-direita a:hover {
+	color: #666;
+}
+
+@media (max-width: 900px) {
+	#menu-container {
+		flex-wrap: wrap;
+		gap: 15px;
+	}
+
+	#icones-direita {
+		position: static;
+		transform: none;
+		margin-top: 10px;
+	}
+
+	#barraPesquisa {
+		width: 180px;
+	}
+}
