@@ -95,5 +95,18 @@ class Principal
             'pagina' => $pagina
         ]);
     }
+
+    public function servicos()
+    {
+        session_start();
+        $usuario = null;
+
+        if (isset($_SESSION["user_id"])) {
+            $userRepository = new UserRepository(Database::getConexao());
+            $usuario = $userRepository->loadUserById($_SESSION["user_id"]);
+        }
+
+        echo $this->ambiente->render("serviços/servicos.html", ['usuario' => $usuario]);
+    }
 }
 ?>

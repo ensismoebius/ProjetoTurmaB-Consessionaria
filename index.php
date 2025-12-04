@@ -22,6 +22,8 @@ $roteador->post("/logout", "AuthController:logout");
 $roteador->get('/novos', 'Principal:novos');
 // rota Sobre Nós
 $roteador->get("/sobrenos", "Principal:sobrenos");
+// rota Serviços
+$roteador->get("/servicos", "Principal:servicos");
 // rotas de autenticação
 $roteador->get("/login", "AuthController:showLoginForm");
 $roteador->post("/login", "AuthController:login");
