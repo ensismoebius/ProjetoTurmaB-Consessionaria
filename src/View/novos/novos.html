@@ -1,18 +1,11 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Catálogo de Veículos - Concessionária</title>
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
-		<link
-			rel="stylesheet"
-			href="/ProjetoTurmaB-Consessionaria/public/assets/css/style.css" />
-		<!-- favor colocar o css dentro do style.css -->
-	</head>
-	<body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
 		<div name="topo">
 			<header id="cabecalho">
 				<h1>Ousadia Motors</h1>
@@ -40,7 +33,7 @@
 						<li><a href="#">Seminovos</a></li>
 						<li><a href="#">Ofertas</a></li>
 						<li><a href="#">Serviços</a></li>
-						<li><a href="/ProjetoTurmaB-Consessionaria/novos">Novos</a></li>
+						<li><a href="#">Novos</a></li>
 						<li><a href="#">Sobre Nós</a></li>
 						<li><a href="/ProjetoTurmaB-Consessionaria/veiculos">Catalogo</a></li>
 						{% if usuario is null %}
@@ -72,7 +65,7 @@
 		</div>
 
 		<main class="mainCatalogo">
-			<h1>Catalogo</h1>
+			<h1>veiculos novos</h1>
 			<!-- veiculos -->
 				<div class="catalogo-container">
 				{% for v in veiculos %}

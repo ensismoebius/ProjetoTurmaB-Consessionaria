@@ -4,7 +4,7 @@ namespace Concessionaria\Projetob\Controller\Admin;
 use PDO;
 use Concessionaria\Projetob\Model\Database;
 
-class VeiculosControllerADM
+class VeiculosControllerAdm
 {
 
     private \PDO $conexao;
@@ -19,7 +19,14 @@ class VeiculosControllerADM
     }
 
     public function gerenciamento_de_veiculos()
-    {   
+    { 
+        
+        session_start();
+        if(!isset($_SESSION['role']) !== 1){
+            echo "Acesso negado. Você não tem permissão para acessar esta página.";
+            return;
+        }
+
         $stmt = $this->conexao->query("SELECT id_veiculos, marca, modelo, preco, ano FROM VEICULOS ORDER BY id_veiculos DESC");
         $veiculos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -27,6 +34,13 @@ class VeiculosControllerADM
     }
     public function showCreateForm()
     {
+
+        session_start();
+        if(!isset($_SESSION['role']) !== 1){
+            echo "Acesso negado. Você não tem permissão para acessar esta página.";
+            return;
+        }
+
         echo $this->ambiente->render("Admin/veiculos/form.html");
     }
 
@@ -39,6 +53,8 @@ class VeiculosControllerADM
         $descricao = $data["descricao"] ?? null;
         $ano = $data["ano"] ?? null;
         $cor = $data["cor"] ?? null;
+        $status = $data["status"] ?? "À venda";
+        $criado_em = date("Y-m-d H:i:s");
 
         if (!$marca || !$modelo || !$preco) {
             echo "Campos obrigatórios não enviados!";
@@ -82,23 +98,15 @@ class VeiculosControllerADM
                 }
             }
 
-            $sql = "INSERT INTO VEICULOS(marca, modelo, preco, imagem, quilometragem, descricao, ano, cor)
-                VALUES (:marca, :modelo, :preco, :imagem, :quilometragem, :descricao, :ano, :cor)";
 
-            $stmt = $this->conexao->prepare($sql);
-            $stmt->bindValue(":marca", $marca);
-            $stmt->bindValue(":modelo", $modelo);
-            $stmt->bindValue(":preco", $preco);
-            $stmt->bindValue(":imagem", $imagem);
-            $stmt->bindValue(":quilometragem", $quilometragem);
             // continue com os outros bindValue normalmente
             if (move_uploaded_file($_FILES["imagem"]["tmp_name"], $caminhoFinal)) {
                 $imagem = $nomeArquivo;
             }
         }
         
-        $sql = "INSERT INTO VEICULOS(marca, modelo, preco, imagem, quilometragem, descricao, ano, cor)
-            VALUES (:marca, :modelo, :preco, :imagem, :quilometragem, :descricao, :ano, :cor)";
+        $sql = "INSERT INTO VEICULOS(marca, modelo, preco, imagem, quilometragem, descricao, ano, cor, status, criado_em)
+            VALUES (:marca, :modelo, :preco, :imagem, :quilometragem, :descricao, :ano, :cor, :status, :criado_em)";
 
         $stmt = $this->conexao->prepare($sql);
         $stmt->bindValue(":marca", $marca);
@@ -109,7 +117,8 @@ class VeiculosControllerADM
         $stmt->bindValue(":descricao", $descricao);
         $stmt->bindValue(":ano", $ano);
         $stmt->bindValue(":cor", $cor);
-
+        $stmt->bindValue(":status", $status);
+        $stmt->bindValue(":criado_em", $criado_em);
         $stmt->execute();
 
         header("Location: /ProjetoTurmaB-Consessionaria/veiculos");
@@ -118,6 +127,13 @@ class VeiculosControllerADM
 
     public function formEditar(array $data)
     {
+
+        session_start();
+        if(!isset($_SESSION['role']) !== 1){
+            echo "Acesso negado. Você não tem permissão para acessar esta página.";
+            return;
+        }
+
         $id = (int) ($data['id_veiculos'] ?? 0); //consulta o id, se existe ou nao
         if ($id <= 0) {
             echo "Id inválido";
@@ -139,6 +155,13 @@ class VeiculosControllerADM
 
     public function atualizarVeiculo(array $data)
     {
+
+        session_start();
+        if(!isset($_SESSION['role']) !== 1){
+            echo "Acesso negado. Você não tem permissão para acessar esta página.";
+            return;
+        }
+
         $id = (int) ($data['id_veiculos'] ?? 0);
         if ($id <= 0) {
             echo "Id inválido";
@@ -152,6 +175,8 @@ class VeiculosControllerADM
         $quilometragem = $data['quilometragem'] ?? null;
         $ano = $data['ano'] ?? null;
         $cor = $data['cor'] ?? null;
+        $status = $data["status"] ?? null;
+        $criado_em = date("Y-m-d H:i:s");
 
         $pasta = $_SERVER["DOCUMENT_ROOT"] . "/ProjetoTurmaB-Consessionaria/public/assets/img/"; //vai pra pasta de imgs
         if (!is_dir($pasta)) {
@@ -168,7 +193,7 @@ class VeiculosControllerADM
         }
         
 
-        $sql = "UPDATE VEICULOS SET marca = :marca, modelo = :modelo, preco = :preco, descricao = :descricao, quilometragem = :quilometragem, ano = :ano, cor = :cor";
+        $sql = "UPDATE VEICULOS SET marca = :marca, modelo = :modelo, preco = :preco, descricao = :descricao, quilometragem = :quilometragem, ano = :ano, cor = :cor, status = :status, criado_em = :criado_em";
         if ($imagem) {
             $sql .= ", imagem = :imagem";
         }
@@ -182,6 +207,8 @@ class VeiculosControllerADM
         $stmt->bindValue(":quilometragem", $quilometragem);
         $stmt->bindValue(':ano', $ano);
         $stmt->bindValue(':cor', $cor);
+        $stmt->bindValue(":status", $status);
+        $stmt->bindValue(":criado_em", $criado_em);
         if ($imagem) {
             $stmt->bindValue(':imagem', $imagem);
         }
@@ -195,6 +222,13 @@ class VeiculosControllerADM
 
     public function removerVeiculo(array $data)
     {
+
+        session_start();
+        if(!isset($_SESSION['role']) !== 1){
+            echo "Acesso negado. Você não tem permissão para acessar esta página.";
+            return;
+        }
+
         $id = (int) ($data['id_veiculos'] ?? $data['id_veiculos'] ?? 0);
         if ($id <= 0) {
             echo "Id inválido";
@@ -208,4 +242,19 @@ class VeiculosControllerADM
         header("Location: /ProjetoTurmaB-Consessionaria/admin/veiculos");
         exit;
     }
+
+    public function novos()
+{
+    $conexao = \Concessionaria\Projetob\Model\Database::getConexao();
+
+    // Ajuste essa condição conforme sua tabela
+    $sql = "SELECT * FROM VEICULOS WHERE status = 'novo' ORDER BY id DESC";
+    $stmt = $conexao->query($sql);
+    $veiculosNovos = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+    echo $this->ambiente->render("veiculos/novos.html", [
+        "veiculos" => $veiculosNovos
+    ]);
+}
+
 }

@@ -1,7 +1,7 @@
 <?php
-    namespace Concessionaria\Projetob\Model;
+namespace Concessionaria\Projetob\Model;
 
-class TipoDespesa
+class Tipo_Despesas
 {
     public int $id_tipo_despesa;
     public string $nome_tipo;
