@@ -1,18 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Catálogo de Veículos - Concessionária</title>
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
-		<link
-			rel="stylesheet"
-			href="/ProjetoTurmaB-Consessionaria/public/assets/css/style.css" />
-		<!-- favor colocar o css dentro do style.css -->
-	</head>
-	<body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veiculos Novos</title>
+	<link rel="stylesheet" href="/ProjetoTurmaB-Consessionaria/public/assets/css/style.css" />
+</head>
+<body>
 		<div name="topo">
 			<header id="cabecalho">
 				<h1>Ousadia Motors</h1>
@@ -36,13 +30,14 @@
 					</form>
 					<!-- fim do modelo -->
 					<ul class="menu">
+						<ul class="menu">
 						<li><a href="/ProjetoTurmaB-Consessionaria/">Home</a></li>
 						<li><a href="/ProjetoTurmaB-Consessionaria/seminovos">Seminovos</a></li>
 						<li><a href="#">Ofertas</a></li>
 						<li><a href="#">Serviços</a></li>
 						<li><a href="/ProjetoTurmaB-Consessionaria/novos">Novos</a></li>
 						<li><a href="/ProjetoTurmaB-Consessionaria/veiculos">Catalogo</a></li>
-						<li><a href="/ProjetoTurmaB-Consessionaria/sobrenos">Sobre Nós</a></li>
+                        <li><a href="/ProjetoTurmaB-Consessionaria/sobrenos">Sobre Nós</a></li>
 						{% if usuario is null %}
 						<li><a href="/ProjetoTurmaB-Consessionaria/login">Login</a></li>
 						<li><a href="/ProjetoTurmaB-Consessionaria/register">Cadastrar-se</a></li>
@@ -71,10 +66,10 @@
 			</header>
 		</div>
 
-		<main class="mainCatalogo">
-			<h1>Catalogo</h1>
+		<main class="mainSeminovos">
+			<h1>Veiculos seminovos</h1>
 			<!-- veiculos -->
-				<div class="catalogo-container">
+				<div class="seminovos-container">
 				{% for v in veiculos %}
 				<div class="item-card">
 					<div class="item-img-wrapper">
