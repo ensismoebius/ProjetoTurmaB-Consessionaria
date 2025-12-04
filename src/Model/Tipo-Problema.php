@@ -1,7 +1,7 @@
 <?php
-    namespace Concessionaria\Projetob\Model;
+namespace Concessionaria\Projetob\Model;
 
-class TipoProblema
+class Tipo_Problema
 {
     public int $id_tp_probl;
     public string $nome_tp_probl;

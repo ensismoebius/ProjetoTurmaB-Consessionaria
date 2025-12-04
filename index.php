@@ -18,6 +18,8 @@ $roteador->post("/proposta", "PropostaController:enviar");
 $roteador->get("/editar", "Admin\\VeiculoController:showCreateForm");
 $roteador->post("/editar", "Admin\\VeiculoController:salvarVeiculo");
 $roteador->post("/logout", "AuthController:logout");
+// rota de Novos
+$roteador->get('/novos', 'Principal:novos');
 // rota Sobre Nós
 $roteador->get("/sobrenos", "Principal:sobrenos");
 // rotas de autenticação
@@ -34,12 +36,12 @@ $roteador->get("/pesquisar", "VeiculosController:pesquisar");
 
 // rotas adm para gerenciamento de veículos
 $roteador->group("/admin/veiculos");
-$roteador->get("/", "Admin\\VeiculosControllerADM:gerenciamento_de_veiculos");
-$roteador->get("/create", "Admin\\VeiculosControllerADM:showCreateForm");
-$roteador->post("/store", "Admin\\VeiculosControllerADM:salvarVeiculo");
-$roteador->get("/{id_veiculos}/edit", "Admin\\VeiculosControllerADM:formEditar");
-$roteador->post("/{id_veiculos}/update", "Admin\\VeiculosControllerADM:atualizarVeiculo");
-$roteador->post("/{id_veiculos}/delete", "Admin\\VeiculosControllerADM:removerVeiculo");
+$roteador->get("/", "Admin\\VeiculosControllerAdm:gerenciamento_de_veiculos");
+$roteador->get("/create", "Admin\\VeiculosControllerAdm:showCreateForm");
+$roteador->post("/store", "Admin\\VeiculosControllerAdm:salvarVeiculo");
+$roteador->get("/{id_veiculos}/edit", "Admin\\VeiculosControllerAdm:formEditar");
+$roteador->post("/{id_veiculos}/update", "Admin\\VeiculosControllerAdm:atualizarVeiculo");
+$roteador->post("/{id_veiculos}/delete", "Admin\\VeiculosControllerAdm:removerVeiculo");
 
 $roteador->dispatch();
 

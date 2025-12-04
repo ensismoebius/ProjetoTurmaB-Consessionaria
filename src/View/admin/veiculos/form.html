@@ -3,69 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adicionar / Editar</title>
-
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Open Sans, sans-serif;
-        }
-
-        body {
-            background-color: rgb(126, 126, 126);
-            min-height: 100vh;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #divDiv {
-            border-radius: 10px;
-            background-color: rgb(160, 159, 159);
-            width: 30%;
-            padding: 20px;
-        }
-
-        header {
-            display: flex;
-            justify-content: center;
-            background: rgb(43, 42, 42);
-            padding: 10px;
-            margin-bottom: 20px;
-        }
-
-        header h1 {
-            color: #ccc;
-            font-size: 28px;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        input {
-            padding: 8px;
-            border-radius: 5px;
-            width: 100%;
-        }
-    </style>
+    {% set isEdit = veiculo is defined %}
+    <title>
+        {% if isEdit %}
+            Editar
+        {% else %}
+            Adicionar
+        {%endif%}</title>
+    <link rel="stylesheet" href="/ProjetoTurmaB-Consessionaria/public/assets/css/style.css">    
 </head>
 
 <body>
 
-<div id="divDiv">
-
+    <div id="headerformadd">
     <header>
-        <h1>Adicionar / Editar</h1>
+        {% if isEdit %}
+        <h1>Editar</h1>
+        {% else %}
+        <h1>Adicionar</h1>
+        {%endif%}
     </header>
+    </div>
 
-    {% set isEdit = veiculo is defined %}
+    <br>
+
+    <div id="formadicionarveiculo">
     <form action="{% if isEdit %}/ProjetoTurmaB-Consessionaria/admin/veiculos/{{ veiculo.id_veiculos }}/update{% else %}/ProjetoTurmaB-Consessionaria/admin/veiculos/store{% endif %}" method="POST" enctype="multipart/form-data">
 
         {% if isEdit %}
@@ -100,15 +62,37 @@
             <input type="text" name="quilometragem" value="{{ veiculo.quilometragem|default('') }}">
         </label>
 
-        <label>Imagens:
-            <input type="file" name="imagem">
+        <input type="hidden" name="status" value="{{ veiculo.status|default('A venda') }}">
+
+        {% if isEdit %}
+        <label>Status:
+            <select name="status">
+                <option value="A venda" {% if veiculo.status == "A venda" %}selected{% endif %}>A venda</option>
+                <option value="Em negociação" {% if veiculo.status == "Em negociação" %}selected{% endif %}>Em negociação</option>
+                <option value="Vendido" {% if veiculo.status == "Vendido" %}selected{% endif %}>Vendido</option>
+            </select>
+        </label>
+        {% endif %}
+
+        {% if isEdit %}
+        <label>Criado em:
+            <input type="text" name="criado_em" value="{{ veiculo.criado_em|date('d/m/Y H:i')|default('') }}" readonly>
+        </label>
+        {% endif %}
+
+        <label class="escolherArquivo">Imagens: 
+            <input type="file" id="imagem" name="imagem" onchange="document.getElementById('file-name').textContent = this.files[0].name">
+            <label for="imagem">Escolher arquivo:
+                <span id="file-name">nenhum selecionado</span>
+            </label>
         </label>
 
         <input type="submit" value="Confirmar">
 
     </form>
 
-</div>
+    </div>
+
 
 </body>
 </html>

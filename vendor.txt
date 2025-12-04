@@ -1,0 +1,4 @@
+Antes de testar o projeto, lembre-se sempre de instalar a pasta 'vendor', senão irá aparecer um aviso e o projeto não funcionará, pois estamos utilizando o .gitignore e pedindo para ignorar este arquivo
+
+Comando para instalação:
+C:\xampp\php\php.exe composer.phar install

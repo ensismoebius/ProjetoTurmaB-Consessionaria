@@ -72,5 +72,28 @@ class Principal
 
         echo $this->ambiente->render("sobrenos/sobrenos.html", ['usuario' => $usuario]);
     }
+
+     public function novos()
+    {
+        session_start();
+        $usuario = null;
+
+        if (isset($_SESSION["user_id"])) {
+            $userRepository = new UserRepository(Database::getConexao());
+            $usuario = $userRepository->loadUserById($_SESSION["user_id"]);
+        }
+        $pagina = isset($_GET['page']) ? (int) $_GET['page'] : 1;
+        if ($pagina < 1)
+            $pagina = 1;
+
+        $limite = 20;
+        $veiculos = $this->veiculosRepository->paginarVeiculo($pagina, $limite);
+
+        echo $this->ambiente->render("novos/novos.html", [
+            'usuario' => $usuario,
+            'veiculos' => $veiculos,
+            'pagina' => $pagina
+        ]);
+    }
 }
 ?>
