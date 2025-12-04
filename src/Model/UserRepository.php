@@ -52,4 +52,30 @@ class UserRepository
 
         return $stmt->execute();
     }
+
+    public function existeGoogleUid(string $google_uid): bool
+    {
+        $stmt = $this->conexao->prepare("SELECT id FROM USUARIOS WHERE google_uid = :uid");
+        $stmt->bindValue(":uid", $google_uid);
+        $stmt->execute();
+        return $stmt->rowCount() > 0;
+    }
+
+    public function criarUsuarioGoogle($nome, $email, $uid)
+    {
+        $senhaAleatoria = bin2hex(random_bytes(16));
+        $senhaHash = password_hash($senhaAleatoria, PASSWORD_DEFAULT);
+
+        $sql = "INSERT INTO USUARIOS (nome, email, senha, google_uid, role)
+                VALUES (:nome, :email, :senha, :uid, :role)";
+
+        $stmt = $this->conexao->prepare($sql);
+        $stmt->bindParam(":nome", $nome);
+        $stmt->bindParam(":email", $email);
+        $stmt->bindParam(":senha", $senhaHash);
+        $stmt->bindParam(":uid", $uid);
+        $stmt->bindValue(":role", 2, PDO::PARAM_INT);
+
+        return $stmt->execute();
+    }
 }
