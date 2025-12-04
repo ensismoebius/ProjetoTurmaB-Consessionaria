@@ -631,3 +631,27 @@ td form {
     gap: 25px;
     padding: 10px;
 }
+
+/* css do Novos */
+
+.mainNovos {
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 10px;
+}
+
+.mainNovos h1 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #000000;
+}
+
+.novos-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 0.1fr));
+    justify-content: center;
+    gap: 25px;
+    padding: 10px;
+}
