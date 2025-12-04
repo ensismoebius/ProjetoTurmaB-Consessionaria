@@ -27,6 +27,7 @@ $roteador->get("/login", "AuthController:showLoginForm");
 $roteador->post("/login", "AuthController:login");
 $roteador->get("/register", "AuthController:showRegisterForm");
 $roteador->post("/register", "AuthController:register");
+$roteador->post("/registerGoogle", "AuthController:RegistrarGoogle");
 
 // rota para detalhes do veículo
 $roteador->group("/veiculos");
