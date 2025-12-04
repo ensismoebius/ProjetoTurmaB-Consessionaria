@@ -15,6 +15,8 @@ $roteador->group(null);
 $roteador->get("/", "Principal:inicio");
 $roteador->get("/proposta", "PropostaController:inicio");
 $roteador->post("/proposta", "PropostaController:enviar");
+
+// autenticação
 $roteador->get("/editar", "Admin\\VeiculoController:showCreateForm");
 $roteador->post("/editar", "Admin\\VeiculoController:salvarVeiculo");
 $roteador->post("/logout", "AuthController:logout");
@@ -29,6 +31,14 @@ $roteador->get("/login", "AuthController:showLoginForm");
 $roteador->post("/login", "AuthController:login");
 $roteador->get("/register", "AuthController:showRegisterForm");
 $roteador->post("/register", "AuthController:register");
+
+$roteador->post("/logout", "AuthController:logout");
+
+// adição/edição
+$roteador->get("/editar", "Admin\\VeiculoController:showCreateForm");
+$roteador->post("/editar", "Admin\\VeiculoController:salvarVeiculo");
+$roteador->get('/veiculos/edit/{id}', "Admin\\VeiculoController:showEditForm");
+
 
 // rota para detalhes do veículo
 $roteador->group("/veiculos");
