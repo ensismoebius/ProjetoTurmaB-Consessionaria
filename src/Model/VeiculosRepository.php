@@ -113,7 +113,7 @@ class VeiculosRepository
         $listaVeiculos = [];
         while ($item = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $veiculo = new Veiculos();
-            $veiculo->id = $item['id_veiculos'];
+            $veiculo->id = $item['id'];
             $veiculo->imagem = $item['imagem'];
             $veiculo->marca = $item['marca'];
             $veiculo->modelo = $item['modelo'];
