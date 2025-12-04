@@ -34,7 +34,7 @@
     }
 
     public function register(){
-            session_start();
+        session_start();
         $nome = trim($_POST['Nome_Usuario'] ?? '');
         $email = trim($_POST['Email_Usuario'] ?? '');
         $senha = $_POST['Senha_Usuario'] ?? '';
@@ -91,6 +91,44 @@
             ]);
         }
     }
+
+    public function RegistrarGoogle()
+        {
+            header('Content-Type: application/json; charset=utf-8');
+
+            $input = json_decode(file_get_contents('php://input'), true);
+            if (!is_array($input) || empty($input)) {
+                $input = $_POST;
+            }
+
+            $nome = trim($input['nome'] ?? '');
+            $email = trim($input['email'] ?? '');
+            $uid = $input['google_uid'] ?? null;
+
+            if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                http_response_code(400);
+                echo json_encode(['error' => 'Email inválido ou não recebido']);
+                return;
+            }
+
+            $userRepo = new UserRepository($this->conexao);
+
+            if ($userRepo->existeEmail($email)) {
+                http_response_code(409);
+                echo json_encode(['error' => 'Usuário já existe']);
+                return;
+            }
+
+            $created = $userRepo->criarUsuarioGoogle($nome, $email, $uid);
+
+            if ($created) {
+                http_response_code(201);
+                echo json_encode(['success' => true]);
+            } else {
+                http_response_code(500);
+                echo json_encode(['error' => 'Erro ao criar usuário']);
+            }
+        }
 
     public function showLoginForm(){
            session_start();
