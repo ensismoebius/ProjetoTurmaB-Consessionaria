@@ -1,98 +1,110 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Login - OUSADIA MOTORS</title>
-		<link
-			rel="stylesheet"
-			href="/ProjetoTurmaB-Consessionaria/public/assets/css/auth.css" />
-		<!-- LINK OBRIGATORIO PARA FUNCIONAR OS PINS-->
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
-		<!-- favor colocar o css dentro do auth.css -->
-	</head>
-	<body>
-		<!--CABEÇALHO PRINCIPAL (PARTE OBRIGATÓRIA DO SITE)-->
-		<div name="topo">
-			<header id="cabecalho">
-				<h1>Ousadia Motors</h1>
-				<hr />
-				<nav id="menu-container">
-					<ul class="menu">
-						<li><a href="/ProjetoTurmaB-Consessionaria/">Home</a></li>
-						<li><a href="#">Seminovos</a></li>
-						<li><a href="#">Ofertas</a></li>
-						<li><a href="#">Serviços</a></li>
-						<li><a href="#">Novos</a></li>
-						<li><a href="#">Sobre Nós</a></li>
-					</ul>
-					<div id="icones-direita">
-						<a href="#" id="Agenda" title="Agenda"
-							><i class="fa-solid fa-calendar-days"></i
-						></a>
-						<a href="#" id="pin" title="Localização"><i class="fa-solid fa-map-pin"></i></a>
-						<a href="#" id="coracao" title="Favoritos"><i class="fa-solid fa-heart"></i></a>
-						<a href="#" id="carrinho" title="Carrinho"
-							><i class="fa-solid fa-cart-shopping"></i
-						></a>
-					</div>
-				</nav>
-				<hr />
-			</header>
-		</div>
-		<!--FIM DO CABEÇALHO PRINCIPAL-->
 
-		<div id="div_loginhtml">
-			<div name="esquerda">
-				<ul>
-					<li>
-						<a href="#" id="facebook"
-							><i class="fa-brands fa-facebook-f"></i> Entrar com Facebook</a
-						>
-					</li>
-					<li>
-						<a href="#" id="google"
-							><i class="fa-brands fa-google"></i> Entrar com Google</a
-						>
-					</li>
-					<li>
-						<a href="#" id="apple"><i class="fa-brands fa-apple"></i> Entrar com Apple</a>
-					</li>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Login - OUSADIA MOTORS</title>
+	<link rel="stylesheet" href="/ProjetoTurmaB-Consessionaria/public/assets/css/auth.css" />
+	<!-- LINK OBRIGATORIO PARA FUNCIONAR OS PINS-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+	<!-- favor colocar o css dentro do auth.css -->
+	<script type="module">
+		import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+		import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
+	  
+		const firebaseConfig = {
+		  apiKey: "AIzaSyDs8W-7vl7uo62C1hJx3fGIjlVfrRnfVXg",
+		  authDomain: "login-db8be.firebaseapp.com",
+		  projectId: "login-db8be",
+		  storageBucket: "login-db8be.firebasestorage.app",
+		  messagingSenderId: "388042463794",
+		  appId: "1:388042463794:web:34473b5ad0c090824aba2b",
+		  measurementId: "G-N91E8YT7TT"
+		};
+	  
+		const app = initializeApp(firebaseConfig);
+		const auth = getAuth(app);
+		const provider = new GoogleAuthProvider();
+	  
+		const googleBtn = document.getElementById("google");
+	  
+		googleBtn.addEventListener("click", (event) => {
+		  event.preventDefault();
+		  signInWithPopup(auth, provider)
+			.then((result) => {
+			  const user = result.user;
+			  alert("Bem-vindo, " + user.displayName);
+			  window.location.href = "/ProjetoTurmaB-Consessionaria/";
+			})
+			.catch((error) => {
+			  alert("Falha ao autenticar com Google.");
+			});
+		});
+	  </script>	  
+	  
+</head>
+
+<body>
+	<!--CABEÇALHO PRINCIPAL (PARTE OBRIGATÓRIA DO SITE)-->
+	<div name="topo">
+		<header id="cabecalho">
+			<h1>Ousadia Motors</h1>
+			<hr />
+			<nav id="menu-container">
+				<ul class="menu">
+					<li><a href="/ProjetoTurmaB-Consessionaria/">Home</a></li>
+					<li><a href="#">Seminovos</a></li>
+					<li><a href="#">Ofertas</a></li>
+					<li><a href="#">Serviços</a></li>
+					<li><a href="#">Novos</a></li>
+					<li><a href="#">Sobre Nós</a></li>
 				</ul>
-			</div>
-			{% if tipo_msg is defined and tipo_msg %}
-			<div id="popup" class="flash {{ tipo_msg == 'erro' ? 'flash-error' : 'flash-success' }}">
-				{{ msg }}
-			</div>
-			<script>
-					var exbir = document.getElementById('popup');
-					
-			</script>
-		{% endif %}
-			<div name="direita">
-				<h1>Digite seu Email e Senha</h1>
-				<form
-					action="/ProjetoTurmaB-Consessionaria/login"
-					method="post"
-					id="form_loginhtml">
-					<input
-						name="Email_Usuario"
-						type="email"
-						id="Email_User_loginhtml"
-						placeholder="E-mail"
-						required />
-					<input
-						name="Senha_Usuario"
-						type="password"
-						id="Senha_User_loginhtml"
-						placeholder="Senha"
-						required />
-					<a href="/ProjetoTurmaB-Consessionaria/register">Cadastre-se</a>
-					<input name="EnviarLogin" type="submit" id="Enviar_loginhtml" value="Entrar" />
-				</form>
-			</div>
+				<div id="icones-direita">
+					<a href="#" id="Agenda" title="Agenda"><i class="fa-solid fa-calendar-days"></i></a>
+					<a href="#" id="pin" title="Localização"><i class="fa-solid fa-map-pin"></i></a>
+					<a href="#" id="coracao" title="Favoritos"><i class="fa-solid fa-heart"></i></a>
+					<a href="#" id="carrinho" title="Carrinho"><i class="fa-solid fa-cart-shopping"></i></a>
+				</div>
+			</nav>
+			<hr />
+		</header>
+	</div>
+	<!--FIM DO CABEÇALHO PRINCIPAL-->
+
+	<div id="div_loginhtml">
+		<div name="esquerda">
+			<ul>
+				<li>
+					<a href="#" id="facebook"><i class="fa-brands fa-facebook-f"></i> Entrar com Facebook</a>
+				</li>
+				<li>
+					<a href="#" id="google"><i class="fa-brands fa-google"></i> Entrar com Google</a>
+				</li>
+				<li>
+					<a href="#" id="apple"><i class="fa-brands fa-apple"></i> Entrar com Apple</a>
+				</li>
+			</ul>
 		</div>
-	</body>
+		{% if tipo_msg is defined and tipo_msg %}
+		<div id="popup" class="flash {{ tipo_msg == 'erro' ? 'flash-error' : 'flash-success' }}">
+			{{ msg }}
+		</div>
+		<script>
+			var exbir = document.getElementById('popup');
+
+		</script>
+		{% endif %}
+		<div name="direita">
+			<h1>Digite seu Email e Senha</h1>
+			<form action="/ProjetoTurmaB-Consessionaria/login" method="post" id="form_loginhtml">
+				<input name="Email_Usuario" type="email" id="Email_User_loginhtml" placeholder="E-mail" required />
+				<input name="Senha_Usuario" type="password" id="Senha_User_loginhtml" placeholder="Senha" required />
+				<a href="/ProjetoTurmaB-Consessionaria/register">Cadastre-se</a>
+				<input name="EnviarLogin" type="submit" id="Enviar_loginhtml" value="Entrar" />
+			</form>
+		</div>
+	</div>
+</body>
+
 </html>
