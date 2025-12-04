@@ -20,6 +20,8 @@ $roteador->post("/editar", "Admin\\VeiculoController:salvarVeiculo");
 $roteador->post("/logout", "AuthController:logout");
 // rota de Novos
 $roteador->get('/novos', 'Principal:novos');
+// rota de Seminovos
+$roteador->get('/seminovos', 'Principal:seminovos');
 // rota Sobre Nós
 $roteador->get("/sobrenos", "Principal:sobrenos");
 // rotas de autenticação
